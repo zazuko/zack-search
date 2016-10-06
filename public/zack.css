@@ -1,0 +1,230 @@
+/* zack */
+body {
+    margin: 0px;
+}
+
+.zack-query-box {
+    background-color:rgba(0,0,0,0.2);
+    position: fixed;
+    padding: 8px;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+
+.zack-filter {
+    padding-top: 2px;
+}
+
+.zack-overview {
+    background-color:lightgray;
+    position: fixed;
+    max-height: 65px;
+    height: 65px;
+    z-index: 4000;
+    padding-top: 8px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.zack-result {
+    height: 70px;
+    border-top: 2px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.zack-result-list {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.zack-big {
+    font-size: 18px;
+    margin: 0;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.result-level {
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    color: white;
+}
+
+.result-level-wrap {
+    width: 20px;
+    height: 100%;
+    float: left;
+    text-align: center;
+    color: white;
+}
+.result-time-cursor {
+    position: absolute;
+    width: 1px;
+    background-color: black;
+    top: 0px;
+    bottom: 0px;
+    z-index: 5000;
+    visibility: hidden;
+}
+
+.result-time-tick {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #000;
+    position: absolute;
+    margin-left: -6px;
+}
+
+.result-time-tick-hover {
+    width: 12px; 
+    height: 6px; 
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    margin-left: -6px;
+}
+
+.result-main {
+    margin-left: 30px;
+}
+
+.filter-item {
+    font-size: 10px;
+    background-color: white;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filter-item:after {
+    content: "x";
+    margin-left: 5px;
+    font-weight: 600;
+    color: red;
+}
+
+.filterable {
+    font-size: 10px;
+    background-color: lightgray;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filterable:after {
+   font-size: 14px;
+   margin-left: 5px;
+   font-weight: 600;
+   margin-top: 4px;
+   color: green;
+   content: "⑅";
+   vertical-align: -40%;
+}
+
+.zack-query-box .filterable {
+    font-size: 110%;
+    background-color: white;
+    float: right;
+}
+
+.zack-query-box .filterable:after {
+    font-size: 110%;
+    vertical-align: -24%;
+}
+
+.level-filterable {
+    font-size: 12px;
+    background-color: lightgray;
+    line-height: 60%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 0px;
+    border-radius: 5px;
+    color: green;
+    overflow: hidden;
+    cursor: pointer;
+    vertical-align: -18%;
+}
+
+.level-filterable:after {
+   margin-left: 5px;
+   font-weight: 600;
+   margin-top: 4px;
+   color: green;
+   content: "⑅";
+   vertical-align: -18%;
+}
+
+.clusterize-scroll{
+  overflow: auto;
+  max-height: 100%;
+}
+
+.clusterize-extra-row.clusterize-keep-parity{
+  display: none;
+}
+
+.clusterize-content{
+    outline: 0;
+    margin-top: 80px;
+}
+
+.clusterize-no-data {
+    margin-left: 35px;
+}
+
+.space {
+    display: none;
+}
+
+.vertical-text {
+    transform: rotate(-90.0deg) translate(-100%, 0%) ;
+    transform-origin: top left;
+}
+
+@media (min-width: 550px) {
+    .space {
+        display: inherit;
+    }
+}
+
+
+
+/* Timline SVG Styles */
+.svg-bar {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
+.svg-handle {
+  fill: gray;
+  shape-rendering: crispEdges;
+  y: -3px;
+  cursor: ew-resize;
+}

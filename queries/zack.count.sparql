@@ -1,0 +1,42 @@
+PREFIX : <http://voc.zazuko.com/zack#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  text: <http://jena.apache.org/text#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  _:b0 :numberOfResults ?count.
+  _:b0 :queryStart ?querystart.
+  _:b0 :queryEnd ?queryend.
+}
+WHERE {
+  { 
+    #provides the overall count of all documents for the query
+    SELECT (COUNT(?sub) as ?count) {
+      GRAPH <http://data.alod.ch/graph/inference-supertitle> {
+        (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
+      }${filters}
+    }
+  }
+  UNION
+  {
+    #provides the first and last available document timestamp for the query
+    SELECT (MIN(?resourcestart) as ?querystart) (MAX(?resourceend) as ?queryend) {
+      GRAPH <http://data.alod.ch/graph/inference-supertitle> {
+        (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
+      }${filters}
+      GRAPH ?t {
+        OPTIONAL {
+          ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
+        }
+        OPTIONAL {
+          ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .  
+        }
+        #check if a valid date can be build, either xsd:date or xsd:gYear, ignores actual datatype
+        FILTER( datatype(xsd:date(?resourcestart)) = xsd:date || datatype(xsd:date(CONCAT(?resourcestart,"-01-01"))) = xsd:date)
+        FILTER( datatype(xsd:date(?resourceend)) = xsd:date || datatype(xsd:date(CONCAT(?resourceend,"-01-01"))) = xsd:date)
+      }
+    }
+  }
+}

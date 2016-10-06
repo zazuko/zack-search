@@ -1,0 +1,39 @@
+{
+  "name": "zack-search",
+  "description": "Search interface for Zack",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zazuko/zack-search",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zazuko/zack-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zazuko/zack-search/issues"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "browserify": "^13.0.1",
+    "cancelable-fetch": "^1.0.0",
+    "color-hash": "^1.0.3",
+    "crab-event": "^0.1.0",
+    "d3": "^4.2.2",
+    "debounce": "^1.0.0",
+    "exorcist": "^0.4.0",
+    "inherits": "^2.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "js-string-escape-cli": "^1.0.0",
+    "lodash": "^4.14.1",
+    "shelljs": "^0.7.0",
+    "sparql-http-client": "^1.0.0",
+    "sparql-search-result-list": "^1.0.0",
+    "uglify-js": "^2.7.3"
+  },
+  "license": "MIT",
+  "scripts": {
+    "install": "node build.js",
+    "lint": "standard lib/*.js"
+  },
+  "devDependencies": {
+    "standard": "^8.0.0"
+  }
+}
