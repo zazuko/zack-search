@@ -5,13 +5,9 @@ A HTML5 only component which allows to interactively access Archival Data on a S
 
 ## Development
 
-* Install dependencies.
+* Install dependencies and build project.
 
   `npm install`
-
-* Build project.
-
-  `npm run build`
 
 * Run localy with proxy to SPARQL endpoint. See for current endpoint in package.json
 
