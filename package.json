@@ -31,9 +31,11 @@
   "license": "MIT",
   "scripts": {
     "install": "node build.js",
-    "lint": "standard lib/*.js"
+    "lint": "standard lib/*.js",
+    "start": "http-server -P http://data.alod.ch/alod dist/"
   },
   "devDependencies": {
+    "http-server": "^0.9.0",
     "standard": "^8.0.0"
   }
 }
