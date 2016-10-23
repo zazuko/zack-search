@@ -2,23 +2,23 @@
 
 A HTML5 only component which allows to interactively access Archival Data on a SPARQL endpoint.
 
-
-## Development
+## Install
 
 * Install dependencies and build project.
 
   `npm install`
+  This resolve the necessary dependencies and creates Zack inside the `/dist` directory.
 
 * Run localy with proxy to SPARQL endpoint. See for current endpoint in package.json
 
   `npm start`
 
-## Configure / Adapte
+## Configure / Development
 
-Change the config file
+* Change the config file
 
-`lib/config.js`
+  `lib/config.js`
 
-Find the relevant CSS definitions in
+* Find the relevant CSS definitions in
 
-`public/zack.css`
+  `public/zack.css`
