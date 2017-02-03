@@ -8,9 +8,8 @@ PREFIX time: <http://www.w3.org/2006/time#>
 
 SELECT (COUNT(?sub) as ?histo) ?bucket ?bucket_start ?bucket_end
 WHERE {
-  GRAPH <http://data.alod.ch/graph/inference-supertitle> {
-    ?sub text:query (skos:hiddenLabel "${searchString}") .
-  }
+  ${textmatch}
+
   GRAPH ?g {
     ?sub time:intervalStarts ?start_ .
     FILTER( datatype(xsd:date(?start_)) = xsd:date || datatype(xsd:date(CONCAT(?start_,"-01-01"))) = xsd:date)
@@ -22,9 +21,8 @@ WHERE {
   {
     SELECT ( MIN(?_start) as ?min ) ( COUNT(?sub) as ?count ) ( ( day( MAX(?_start) - MIN(?_start) ) / ${width} ) as ?interval )
     WHERE {
-      GRAPH <http://data.alod.ch/graph/inference-supertitle> {
-        ?sub text:query (skos:hiddenLabel "${searchString}") .
-      }
+      ${textmatch}
+
       GRAPH ?g {
         ?sub time:intervalStarts ?_start_ .
         FILTER( datatype(xsd:date(?_start_)) = xsd:date || datatype(xsd:date(CONCAT(?_start_,"-01-01"))) = xsd:date)

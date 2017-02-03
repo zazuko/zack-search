@@ -14,9 +14,8 @@ WHERE {
   { 
     #provides the overall count of all documents for the query
     SELECT (COUNT(?sub) as ?count) {
-      GRAPH <http://data.alod.ch/graph/inference-supertitle> {
-        (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
-      }${filters}
+      ${textmatch}
+      ${filters}
     }
   }
   UNION

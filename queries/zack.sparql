@@ -13,9 +13,8 @@ CONSTRUCT {
 } WHERE {
   {
     SELECT  ?sub ?score WHERE {
-      GRAPH <http://data.alod.ch/graph/inference-supertitle> {
-        (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
-      }${filters}
+      ${textmatch}
+      ${filters}
     }
     OFFSET ${offset}
     LIMIT ${limit}

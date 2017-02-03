@@ -5,6 +5,8 @@ mkdir('-p', '.build')
 exec('js-string-escape --commonjs queries/zack.count.sparql .build/zack-count-sparql.js')
 exec('js-string-escape --commonjs queries/zack.sparql .build/zack-sparql.js')
 exec('js-string-escape --commonjs queries/zack.histogram.sparql .build/zack-histogram-sparql.js')
+exec('js-string-escape --commonjs queries/zack.textmatch.part.sparql .build/zack-textmatch-part-sparql.js')
+exec('js-string-escape --commonjs queries/zack.textmatch-dummy.part.sparql .build/zack-textmatch-dummy-part-sparql.js')
 
 mkdir('-p','dist')
 
