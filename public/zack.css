@@ -107,6 +107,15 @@ body {
     margin-left: 30px;
 }
 
+.result-main a {
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    display: inline-block;
+}
+
 .filter-item {
     font-size: 10px;
     background-color: white;
@@ -206,6 +215,7 @@ body {
 .vertical-text {
     transform: rotate(-90.0deg) translate(-100%, 0%) ;
     transform-origin: top left;
+    cursor: pointer;
 }
 
 @media (min-width: 550px) {
