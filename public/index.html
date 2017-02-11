@@ -53,5 +53,33 @@
     </div>-->
 </div>
 <script src="zack.min.js"></script>
+<script>
+  var options = {
+    endpointUrl: '/query',
+    filterContainer: 'filter-container',
+    resultTypes: ['http://data.archiveshub.ac.uk/def/ArchivalResource'],
+    resultList: {
+      pageSize: 20,
+      preload: 80
+    },
+    endpoints: {
+      '/query': {
+        queries: {
+          search: 'fusekiSearch',
+          count: 'fusekiCount',
+          histogram: 'fusekiHistogram',
+          textmatch: 'fusekiTextmatch'
+        }
+      }
+    }
+  }
+
+  window.app = new Zack(options)
+
+  window.app.init().catch(function (err) {
+    console.error(err)
+  })
+
+</script>
 </body>
 </html>

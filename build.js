@@ -10,7 +10,7 @@ exec('js-string-escape --commonjs queries/zack.textmatch-dummy.part.sparql .buil
 
 mkdir('-p','dist')
 
-exec('browserify lib/app.js --debug | exorcist dist/zack.js.map > dist/zack.js')
+exec('browserify lib/app.js --standalone Zack --debug | exorcist dist/zack.js.map > dist/zack.js')
 exec('uglifyjs dist/zack.js --in-source-map dist/zack.js.map --source-map dist/zack.min.js.map --source-map-url zack.min.js.map --output dist/zack.min.js')
 
 cp('-r', 'public/*', 'dist/')
