@@ -1,3 +1,0 @@
-GRAPH <http://data.alod.ch/graph/inference-supertitle> {
-  ?sub ?score ?literal .
-}
