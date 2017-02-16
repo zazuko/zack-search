@@ -19,6 +19,7 @@
     "d3": "^4.2.2",
     "debounce": "^1.0.0",
     "exorcist": "^0.4.0",
+    "glob": "^7.1.1",
     "inherits": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
     "js-string-escape-cli": "^1.0.0",

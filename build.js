@@ -1,12 +1,24 @@
 require('shelljs/global')
 
+var camelCase = require('lodash/camelCase')
+var fs = require('fs')
+var glob = require('glob').sync
+var path = require('path')
+
 mkdir('-p', '.build')
 
-exec('js-string-escape --commonjs queries/zack.count.sparql .build/zack-count-sparql.js')
-exec('js-string-escape --commonjs queries/zack.sparql .build/zack-sparql.js')
-exec('js-string-escape --commonjs queries/zack.histogram.sparql .build/zack-histogram-sparql.js')
-exec('js-string-escape --commonjs queries/zack.textmatch.part.sparql .build/zack-textmatch-part-sparql.js')
-exec('js-string-escape --commonjs queries/zack.textmatch-dummy.part.sparql .build/zack-textmatch-dummy-part-sparql.js')
+// build queries index module
+var queries = 'module.exports = {\n' + glob('queries/*.sparql').map(function (sparqlFile) {
+  var basename = path.basename(sparqlFile, '.sparql')
+
+  // convert sparql queries to CommonJS modules
+  exec('js-string-escape --commonjs ' + sparqlFile + ' ' + path.join('.build', basename) + '.js')
+
+  // convert module names to module index
+  return '  ' + camelCase(basename) + ': require(\'' + path.join('../.build', basename) + '\')'
+}).join(',\n') + '\n}\n'
+
+fs.writeFileSync('.build/queries.js', queries)
 
 mkdir('-p','dist')
 
