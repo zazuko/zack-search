@@ -1,0 +1,56 @@
+PREFIX : <http://voc.zazuko.com/zack#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  text: <http://jena.apache.org/text#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX time: <http://www.w3.org/2006/time#>
+
+SELECT (COUNT(?sub) as ?histo) ?bucket ?bucket_start ?bucket_end
+WHERE {
+  ${textmatch}
+
+  GRAPH ?g {
+    ?sub time:intervalStarts ?start_ .
+    FILTER( datatype(xsd:date(?start_)) = xsd:date || datatype(xsd:date(CONCAT(?start_,"-01-01"))) = xsd:date)
+    BIND ( IF(STRLEN(xsd:string(?start_)) = 4, xsd:date(CONCAT(?start_,"-01-01")), xsd:date(?start_)) AS ?start )
+
+    ${filters}
+  }
+
+  {
+    SELECT ( MIN(?_start) as ?min ) ( COUNT(?sub) as ?count ) ( ( MAX(?_start) - MIN(?_start) ) as ?range ) 
+    WHERE {
+      ${textmatch}
+
+      GRAPH ?g {
+        ?sub time:intervalStarts ?_start_ .
+        FILTER( datatype(xsd:date(?_start_)) = xsd:date || datatype(xsd:date(CONCAT(?_start_,"-01-01"))) = xsd:date)
+        BIND ( IF(STRLEN(xsd:string(?_start_)) = 4, xsd:date(CONCAT(?_start_,"-01-01")), xsd:date(?_start_)) AS ?_start )
+
+        ${filters}
+      }
+    }
+  }
+
+  # calculate how many days the start days span
+  BIND (xsd:integer(strbefore(strafter(str(?range),"P"), "D")) as ?rangeDays)
+
+  # the number of of days in each interval for a fixed number of intervals
+#  BIND (floor(?rangeDays / ${width}) AS ?interval) 
+  BIND (floor(?rangeDays / 10) AS ?interval) 
+
+  # the number of days from the min date to start day
+  BIND (xsd:integer(strbefore(strafter(str(?start - ?min),"P"), "D")) as ?startDays)
+
+  # index of the bucket for this start date
+  BIND (floor(?startDays/?interval) AS ?bucket) 
+
+  # bucket start and end date
+  BIND (?min + ("P1D"^^xsd:dayTimeDuration * ?interval * ?bucket) AS ?bucket_start ) 
+  BIND (?min + ("P1D"^^xsd:dayTimeDuration * ?interval * (?bucket +1)) AS ?bucket_end ) 
+
+}
+
+GROUP BY ?bucket ?bucket_start ?bucket_end
+ORDER BY ?bucket
