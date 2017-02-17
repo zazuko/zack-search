@@ -22,9 +22,9 @@ WHERE {
   {
     #provides the first and last available document timestamp for the query
     SELECT (MIN(?resourcestart) as ?querystart) (MAX(?resourceend) as ?queryend) {
-      GRAPH <http://data.alod.ch/graph/inference-supertitle> {
-        (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
-      }${filters}
+      ${textmatch}
+      ${filters}
+
       GRAPH ?t {
         OPTIONAL {
           ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
