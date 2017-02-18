@@ -1,6 +1,6 @@
-# Zack [zack-search]
+# Zazuko Zack [zack-search]
 
-A HTML5 only component which allows to interactively access and search data on a SPARQL endpoint.
+A higly adaptable HTML5 only component which enables interactive access and to search data from a SPARQL endpoint.
 
 ## Install
 
