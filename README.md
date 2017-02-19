@@ -1,6 +1,6 @@
-# Zack [zack-search]
+# Zazuko Zack [zack-search]
 
-A HTML5 only component which allows to interactively access Archival Data on a SPARQL endpoint.
+A higly adaptable HTML5 only component which enables interactive access and to search data from a SPARQL endpoint.
 
 ## Install
 
@@ -15,9 +15,9 @@ A HTML5 only component which allows to interactively access Archival Data on a S
 
 ## Configure / Development
 
-* Change the config file
+* Change the config inside the HTML
 
-  `lib/config.js`
+  `public/index.html`
 
 * Find the relevant CSS definitions in
 
