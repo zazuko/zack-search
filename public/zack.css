@@ -1,15 +1,11 @@
 /* zack */
-body {
-    margin: 0px;
+.zack-content {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 120px);
 }
 
 .zack-query-box {
-    background-color:rgba(0,0,0,0.2);
-    position: fixed;
-    padding: 8px;
-    top: 20px;
-    left: 20px;
-    right: 20px;
     z-index: 10000;
 }
 
@@ -18,10 +14,7 @@ body {
 }
 
 .zack-overview {
-    background-color:lightgray;
-    position: fixed;
     max-height: 65px;
-    height: 65px;
     z-index: 4000;
     padding-top: 8px;
     bottom: 0;
@@ -38,26 +31,13 @@ body {
 
 .zack-result-list {
     position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    height: 100%;
+    width: 100%;
 }
 
 .zack-big {
-    font-size: 18px;
+    font-size: 120%;
     margin: 0;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font: 10px sans-serif;
 }
 
 .result-level {
@@ -200,12 +180,11 @@ body {
 }
 
 .clusterize-content{
+    width: calc(100% - 15px);
     outline: 0;
-    margin-top: 80px;
 }
 
 .clusterize-no-data {
-    margin-left: 35px;
 }
 
 .space {
@@ -217,14 +196,6 @@ body {
     transform-origin: top left;
     cursor: pointer;
 }
-
-@media (min-width: 550px) {
-    .space {
-        display: inherit;
-    }
-}
-
-
 
 /* Timline SVG Styles */
 .svg-bar {
@@ -238,3 +209,16 @@ body {
   y: -3px;
   cursor: ew-resize;
 }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+
