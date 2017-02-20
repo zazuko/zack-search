@@ -24,11 +24,13 @@ WHERE {
     SELECT (MIN(?resourcestart) as ?querystart) (MAX(?resourceend) as ?queryend) {
       ${textmatch}
       ${filters}
-      OPTIONAL {
-        ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
-      }
-      OPTIONAL {
-        ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .  
+      GRAPH ?g {
+              OPTIONAL {
+                ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
+              }
+              OPTIONAL {
+                ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .
+              }
       }
     }
   }
