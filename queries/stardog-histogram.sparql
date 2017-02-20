@@ -37,8 +37,7 @@ WHERE {
   BIND (xsd:integer(strbefore(strafter(str(?range),"P"), "D")) as ?rangeDays)
 
   # the number of of days in each interval for a fixed number of intervals
-#  BIND (floor(?rangeDays / ${width}) AS ?interval) 
-  BIND (floor(?rangeDays / 10) AS ?interval) 
+  BIND (floor(?rangeDays / ${width}) AS ?interval) 
 
   # the number of days from the min date to start day
   BIND (xsd:integer(strbefore(strafter(str(?start - ?min),"P"), "D")) as ?startDays)
