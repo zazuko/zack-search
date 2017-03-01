@@ -12,10 +12,10 @@
   <div class="bs-docs-section">
     <div class="row">
        <div class="zack-query-box">
-         <div class="col-lg-6 col-sm-12 col-xs-12">
+         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
            <input autofocus id="query" class="form-control input-lg zack-query-input" type="text" placeholder="Refine Result with Keywords.">
          </div>
-         <div class="col-lg-6 hidden-sm hidden-xs">
+         <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
            <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/item" data-named-node class="filterable" onclick="app.search.addFilter(this)">Items</div>
            <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/file" data-named-node class="filterable" onclick="app.search.addFilter(this)">Files</div>
            <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/series" data-named-node class="filterable" onclick="app.search.addFilter(this)">Series</div>
@@ -44,8 +44,10 @@
       <div class="zack-overview">
         <div id="zack-timeline" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
         </div>
-        <div class="col-lg-2 pull-right hidden-xs">
-          <span id="count" class="zack-count zack-big"></span> <i>Results</i>
+        <div class="col-lg-2 hidden-xs">
+          <div class="zack-meta pull-right">
+            <span id="count" class="zack-count zack-big"></span> <i>Results</i>
+          </div>
         </div>
       </div>
     </div>

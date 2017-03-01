@@ -2,7 +2,7 @@
 .zack-content {
     position: relative;
     width: 100%;
-    height: calc(100vh - 135px);
+    height: calc(100vh - 140px);
 }
 
 .zack-query-box {
@@ -20,6 +20,10 @@
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.zack-meta {
+    padding-top: 20px;
 }
 
 .zack-result {
@@ -144,13 +148,11 @@
 }
 
 .filterable:after {
-   font-size: 14px;
    margin-left: 5px;
    font-weight: 600;
    margin-top: 4px;
    color: green;
-   content: "⑅";
-   vertical-align: -40%;
+   content: "⊕";
 }
 
 .zack-query-box .filterable {
@@ -161,30 +163,14 @@
 
 .zack-query-box .filterable:after {
     font-size: 110%;
-    vertical-align: -24%;
 }
 
-.level-filterable {
-    font-size: 12px;
-    background-color: lightgray;
-    line-height: 60%;
-    margin: 2px 4px 2px 4px;
-    padding: 2px 4px 2px 0px;
-    border-radius: 5px;
-    color: green;
-    overflow: hidden;
+.vertical-text {
+    transform: rotate(-90.0deg) translate(-100%, 0%) ;
+    transform-origin: top left;
     cursor: pointer;
-    vertical-align: -18%;
 }
 
-.level-filterable:after {
-   margin-left: 5px;
-   font-weight: 600;
-   margin-top: 4px;
-   color: green;
-   content: "⑅";
-   vertical-align: -18%;
-}
 
 .clusterize-scroll{
   overflow: auto;
@@ -205,12 +191,6 @@
 
 .space {
     display: none;
-}
-
-.vertical-text {
-    transform: rotate(-90.0deg) translate(-100%, 0%) ;
-    transform-origin: top left;
-    cursor: pointer;
 }
 
 /* Timline SVG Styles */
