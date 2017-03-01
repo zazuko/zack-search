@@ -2,7 +2,7 @@
 .zack-content {
     position: relative;
     width: 100%;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 135px);
 }
 
 .zack-query-box {
@@ -24,7 +24,7 @@
 
 .zack-result {
     height: 70px;
-    border-top: 2px solid black;
+    border-top: 1px dotted black;
     overflow: hidden;
     position: relative;
 }
@@ -116,9 +116,24 @@
 }
 
 .filterable {
-    border-color: rgb(102, 102, 102);
-    border-width: initial;
+    border-color: #ddd;
+    border-width: 1px;
     border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filterable:hover {
+    border-color: #2196f3;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
     font-size: 10px;
     line-height: 95%;
     margin: 2px 4px 2px 4px;
