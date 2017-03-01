@@ -116,12 +116,13 @@
 }
 
 .filterable {
+    border-color: rgb(102, 102, 102);
+    border-width: initial;
+    border-radius: 5px;
     font-size: 10px;
-    background-color: lightgray;
     line-height: 95%;
     margin: 2px 4px 2px 4px;
     padding: 2px 4px 2px 4px;
-    border-radius: 5px;
     overflow: hidden;
     float: left;
     cursor: pointer;
