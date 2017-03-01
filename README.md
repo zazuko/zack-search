@@ -1,6 +1,6 @@
 # Zazuko Zack [zack-search]
 
-A higly adaptable HTML5 only component which enables interactive access and to search data from a SPARQL endpoint.
+A highly adaptable HTML5 only component which enables interactive access and to search data from a SPARQL endpoint.
 
 ## Install
 
@@ -9,7 +9,7 @@ A higly adaptable HTML5 only component which enables interactive access and to s
   `npm install`
   This resolve the necessary dependencies and creates Zack inside the `/dist` directory.
 
-* Run localy with proxy to SPARQL endpoint. See for current endpoint in package.json
+* Run locally with proxy to SPARQL endpoint. See for current endpoint in package.json
 
   `npm start`
 
@@ -22,3 +22,4 @@ A higly adaptable HTML5 only component which enables interactive access and to s
 * Find the relevant CSS definitions in
 
   `public/zack.css`
+
