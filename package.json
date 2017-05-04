@@ -27,7 +27,7 @@
     "qs": "^6.3.1",
     "shelljs": "^0.7.0",
     "sparql-http-client": "^1.0.0",
-    "sparql-search-result-list": "^1.0.0",
+    "sparql-search-result-list": "^1.1.0",
     "uglify-js": "^2.7.3"
   },
   "license": "MIT",

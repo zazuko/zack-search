@@ -20,13 +20,23 @@ CONSTRUCT {
   ?sub3 <http://purl.org/dc/elements/1.1/relation> ?sub4 .
   ?sub4 <http://data.archiveshub.ac.uk/def/level> ?level4 .
   ?sub4 <http://purl.org/dc/elements/1.1/title> ?title4 .
-  ?sub :score ?score .
+  ?sub :score ?totalScore .
 } WHERE {
   {
-    SELECT  ?sub ?score WHERE {
+    SELECT ?sub ?totalScore WHERE {
       ${textmatch}
       ${filters}
+
+      OPTIONAL {
+        ?sub <http://www.w3.org/2006/time#intervalStarts> ?startOptional .
+      }
+      BIND ( COALESCE(STR(?startOptional), "0001-01-01") AS ?start )
+      BIND ( xsd:date(CONCAT(SUBSTR(?start, 0, 10), SUBSTR("0001-01-01", STRLEN(?start) + 1))) AS ?startDate )
+      BIND ( xsd:date(NOW()) - ?startDate AS ?startDelta )
+      BIND ( COALESCE(xsd:float(STRBEFORE(STRAFTER(STR(?startDelta),"P"), "D")), 0) AS ?startScore )
+      BIND ( COALESCE(?score, ?startScore) AS ?totalScore )
     }
+    ORDER BY DESC(?totalScore)
     OFFSET ${offset}
     LIMIT ${limit}
   }
