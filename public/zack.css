@@ -171,6 +171,56 @@
     cursor: pointer;
 }
 
+.result-hierarchy { 
+  list-style: none; 
+  overflow: hidden; 
+  font-size: 70%;
+  padding: 0;
+  margin: 0;
+}
+.result-hierarchy li { 
+  float: left; 
+}
+.result-hierarchy li a {
+  color: white;
+  text-decoration: none; 
+  padding: 0px 0 0px 5px;
+  position: relative; 
+  display: block;
+  float: left;
+  cursor: pointer;
+}
+
+.result-hierarchy li a .result-hierarchy-after { 
+  content: " "; 
+  display: block; 
+  width: 0; 
+  height: 0;
+  border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+  left: 100%;
+  z-index: 2; 
+}
+
+.result-hierarchy li a::before { 
+  content: " "; 
+  display: block; 
+  width: 0; 
+  height: 0;
+  border-top: 50px solid transparent;       
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1; 
+}
 
 .clusterize-scroll{
   overflow: auto;
