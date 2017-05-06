@@ -94,14 +94,6 @@
   var options = {
     endpointUrl: '/query',
     filterContainer: 'filter-container',
-    levels: {
-     'archive': {icon: 'fa-university', title: 'Archive'},
-     'fond': {icon: 'fa-archive', title: 'Fonds'},
-     'subfond': {icon: 'fa-archive', title: 'Sub-Fonds'},
-     'series': {icon: 'fa-sitemap', title: 'Series'},
-     'file': {icon: 'fa-folder-open', title: 'Files'},
-     'item': {icon: 'fa-file', title: 'Items'}
-    },
     resultTypes: ['http://data.archiveshub.ac.uk/def/ArchivalResource'],
     resultList: {
       pageSize: 20,
@@ -123,6 +115,17 @@
       }),
       new Zack.Histogram({
         margin: {top: 0, right: 20, bottom: 0, left: 20}
+      }),
+      new Zack.TypeFilter({
+        predicate: 'http://data.archiveshub.ac.uk/def/level',
+        values: {
+         'http://data.alod.ch/alod/level/archive': {icon: 'fa-university', title: 'Archive'},
+         'http://data.alod.ch/alod/level/fond': {icon: 'fa-archive', title: 'Fonds'},
+         'http://data.alod.ch/alod/level/subfond': {icon: 'fa-archive', title: 'Sub-Fonds'},
+         'http://data.alod.ch/alod/level/series': {icon: 'fa-sitemap', title: 'Series'},
+         'http://data.alod.ch/alod/level/file': {icon: 'fa-folder-open', title: 'Files'},
+         'http://data.alod.ch/alod/level/item': {icon: 'fa-file', title: 'Items'}
+        }
       })
     ]
   }

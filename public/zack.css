@@ -101,6 +101,10 @@
     color: black;
 }
 
+.result-tags {
+    height: 20px;
+    overflow: hidden;
+}
 
 .filter-item {
     font-size: 10px;
