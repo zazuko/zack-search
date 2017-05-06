@@ -3,24 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" integrity="sha384-awusxf8AUojygHf2+joICySzB780jVvQaVCAt1clU3QsyAitLGul28Qxb2r1e5g+" crossorigin="anonymous">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+
   <link href="zack.css" rel="stylesheet">
 </head>
 <body>
-
 <div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">aLOD.ch - Archival Linked Open Data</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><i class="fa fa-question"></i></a></li>
+          <li class="active"><a href="#">Search</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Participating Archives <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a target="_blank" href="http://www.bar.admin.ch/">Archives fédérales suisses</a></li>
+              <li><a target="_blank" href="http://www.ne.ch/archives">Archives de l’Etat de Neuchâtel</a></li>
+              <li><a target="_blank" href="http://www.vs.ch/Navig/navig.asp?MenuID=20179">Archives de l’Etat du Valais</a></li>
+              <li><a target="_blank" href="http://etat.geneve.ch/dt/archives/">Archives d’Etat de Genève</a></li>
+              <li><a target="_blank" href="http://www.staatsarchiv.bs.ch/">Archives cantonales de Bâle-Ville</a></li>
+              <li><a target="_blank" href="#">Archives de la Ville de Baden</a></li>
+            </ul>
+          </li>
+          <li><a href="/">About</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
   <div class="bs-docs-section">
     <div class="row">
        <div class="zack-query-box">
-         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
            <input autofocus id="query" class="form-control input-lg zack-query-input" type="text" placeholder="Refine Result with Keywords.">
          </div>
-         <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/item" data-named-node class="filterable" onclick="app.search.addFilter(this)">Items</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/file" data-named-node class="filterable" onclick="app.search.addFilter(this)">Files</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/series" data-named-node class="filterable" onclick="app.search.addFilter(this)">Series</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/subfond" data-named-node class="filterable" onclick="app.search.addFilter(this)">Sub-Fonds</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/fond" data-named-node class="filterable" onclick="app.search.addFilter(this)">Fonds</div>
+         <div id="level-filters" class="col-lg-8 col-md-8 hidden-sm hidden-xs">
+           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/item" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-file"></i> Items</div>
+           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/file" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-folder"></i> Files</div>
+           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/series" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-sitemap"></i> Series</div>
+           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/subfond" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-archive"></i> Sub-Fonds</div>
+           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/fond" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-archive"></i> Fonds</div>
+           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/archive" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-university"></i> Archive</div>
          </div>
        </div>
     </div>
@@ -53,11 +88,20 @@
     </div>
   </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.10/bootstrap-native.min.js"></script>
 <script src="zack.min.js"></script>
 <script>
   var options = {
     endpointUrl: '/query',
     filterContainer: 'filter-container',
+    levels: {
+     'archive': {icon: 'fa-university', title: 'Archive'},
+     'fond': {icon: 'fa-archive', title: 'Fonds'},
+     'subfond': {icon: 'fa-archive', title: 'Sub-Fonds'},
+     'series': {icon: 'fa-sitemap', title: 'Series'},
+     'file': {icon: 'fa-folder-open', title: 'Files'},
+     'item': {icon: 'fa-file', title: 'Items'}
+    },
     resultTypes: ['http://data.archiveshub.ac.uk/def/ArchivalResource'],
     resultList: {
       pageSize: 20,

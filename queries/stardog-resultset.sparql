@@ -10,16 +10,20 @@ CONSTRUCT {
   ?sub a :resultItem .
   ?sub ?pred ?obj .
   ?sub1 <http://data.archiveshub.ac.uk/def/level> ?level1 .
-  ?sub1 <http://purl.org/dc/elements/1.1/title> ?title1 .
-  ?sub1 <http://purl.org/dc/elements/1.1/relation> ?sub2 .
+  ?sub1 <http://purl.org/dc/terms/title> ?title1 .
+  ?sub1 <http://purl.org/dc/terms/relation> ?sub2 .
   ?sub2 <http://data.archiveshub.ac.uk/def/level> ?level2 .
-  ?sub2 <http://purl.org/dc/elements/1.1/title> ?title2 .
-  ?sub2 <http://purl.org/dc/elements/1.1/relation> ?sub3 .
+  ?sub2 <http://purl.org/dc/terms/title> ?title2 .
+  ?sub2 <http://purl.org/dc/terms/relation> ?sub3 .
   ?sub3 <http://data.archiveshub.ac.uk/def/level> ?level3 .
-  ?sub3 <http://purl.org/dc/elements/1.1/title> ?title3 .
-  ?sub3 <http://purl.org/dc/elements/1.1/relation> ?sub4 .
+  ?sub3 <http://purl.org/dc/terms/title> ?title3 .
+  ?sub3 <http://purl.org/dc/terms/relation> ?sub4 .
   ?sub4 <http://data.archiveshub.ac.uk/def/level> ?level4 .
-  ?sub4 <http://purl.org/dc/elements/1.1/title> ?title4 .
+  ?sub4 <http://purl.org/dc/terms/title> ?title4 .
+  ?sub5 <http://data.archiveshub.ac.uk/def/level> ?level5 .
+  ?sub5 <http://purl.org/dc/terms/title> ?title5 .
+  ?sub6 <http://data.archiveshub.ac.uk/def/level> ?level6 .
+  ?sub6 <http://purl.org/dc/terms/title> ?title6 .
   ?obj <http://schema.org/name> ?name .
   ?sub :score ?totalScore .
 } WHERE {
@@ -49,24 +53,34 @@ CONSTRUCT {
     }
 
     OPTIONAL {
-      ?sub <http://purl.org/dc/elements/1.1/relation> ?sub1 .
+      ?sub <http://purl.org/dc/terms/relation> ?sub1 .
       ?sub1 <http://data.archiveshub.ac.uk/def/level> ?level1 .
-	  ?sub1 <http://purl.org/dc/elements/1.1/title> ?title1 .
-	  OPTIONAL {
-	    ?sub1 <http://purl.org/dc/elements/1.1/relation> ?sub2 .
+      ?sub1 <http://purl.org/dc/terms/title> ?title1 .
+      OPTIONAL {
+        ?sub1 <http://purl.org/dc/terms/relation> ?sub2 .
         ?sub2 <http://data.archiveshub.ac.uk/def/level> ?level2 .
-      	?sub2 <http://purl.org/dc/elements/1.1/title> ?title2 .
-      	OPTIONAL {
-          ?sub2 <http://purl.org/dc/elements/1.1/relation> ?sub3 .
+        ?sub2 <http://purl.org/dc/terms/title> ?title2 .
+        OPTIONAL {
+          ?sub2 <http://purl.org/dc/terms/relation> ?sub3 .
           ?sub3 <http://data.archiveshub.ac.uk/def/level> ?level3 .
-          ?sub3 <http://purl.org/dc/elements/1.1/title> ?title3 .
+          ?sub3 <http://purl.org/dc/terms/title> ?title3 .
           OPTIONAL {
-            ?sub3 <http://purl.org/dc/elements/1.1/relation> ?sub4 .
+            ?sub3 <http://purl.org/dc/terms/relation> ?sub4 .
             ?sub4 <http://data.archiveshub.ac.uk/def/level> ?level4 .
-            ?sub4 <http://purl.org/dc/elements/1.1/title> ?title4 .
+            ?sub4 <http://purl.org/dc/terms/title> ?title4 .
+            OPTIONAL {
+              ?sub4 <http://purl.org/dc/terms/relation> ?sub5 .
+              ?sub5 <http://data.archiveshub.ac.uk/def/level> ?level5 .
+              ?sub5 <http://purl.org/dc/terms/title> ?title5 .
+              OPTIONAL {
+                ?sub5 <http://purl.org/dc/terms/relation> ?sub6 .
+                ?sub6 <http://data.archiveshub.ac.uk/def/level> ?level6 .
+                ?sub6 <http://purl.org/dc/terms/title> ?title6 .
+              }
+            }
           }
         }
-	  }
-	}
+      }
+    }
   }
 }
