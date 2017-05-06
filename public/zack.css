@@ -76,6 +76,7 @@
     border-top: 6px solid #000;
     position: absolute;
     margin-left: -6px;
+    z-index: 5000;
 }
 
 .result-time-tick-hover {
@@ -171,20 +172,34 @@
     cursor: pointer;
 }
 
+.result-hierarchy-clip {
+  height: 19px;
+  overflow: hidden;
+}
+
 .result-hierarchy { 
   list-style: none; 
-  overflow: hidden; 
-  font-size: 70%;
+  overflow-x: scroll; 
+  overflow-y: hidden; 
+  font-size: 80%;
+  width: 1000%;
+  height: 39px;
   padding: 0;
   margin: 0;
 }
+
 .result-hierarchy li { 
   float: left; 
 }
+
+.result-hierarchy li:first-child a {
+  padding-left: 10px;
+} 
+
 .result-hierarchy li a {
   color: white;
   text-decoration: none; 
-  padding: 0px 0 0px 5px;
+  padding: 0px 0 0px 50px;
   position: relative; 
   display: block;
   float: left;
@@ -203,7 +218,7 @@
   top: 50%;
   margin-top: -50px; 
   left: 100%;
-  z-index: 2; 
+  z-index: 2001; 
 }
 
 .result-hierarchy li a::before { 
@@ -219,7 +234,7 @@
   margin-top: -50px; 
   margin-left: 1px;
   left: 100%;
-  z-index: 1; 
+  z-index: 2000; 
 }
 
 .clusterize-scroll{
