@@ -12,18 +12,19 @@
 <div class="container">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">aLOD.ch - Archival Linked Open Data</a>
-      </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+          <li><div id="zack-spinner" class="spinner paused"></div></li>
         </ul>
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">aLOD.ch - Archival Linked Open Data</a>
+              </div>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><i class="fa fa-question"></i></a></li>
           <li class="active"><a href="#">Search</a></li>
@@ -49,13 +50,7 @@
          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
            <input autofocus id="query" class="form-control input-lg zack-query-input" type="text" placeholder="Refine Result with Keywords.">
          </div>
-         <div id="level-filters" class="col-lg-8 col-md-8 hidden-sm hidden-xs">
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/item" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-file"></i> Items</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/file" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-folder"></i> Files</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/series" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-sitemap"></i> Series</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/subfond" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-archive"></i> Sub-Fonds</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/fond" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-archive"></i> Fonds</div>
-           <div id="level-filter" data-filterable="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-value="http://data.alod.ch/alod/level/archive" data-named-node class="filterable" onclick="app.search.addFilter(this)"><i class="fa fa-university"></i> Archive</div>
+         <div id="type-filters" class="col-lg-8 col-md-8 hidden-sm hidden-xs">
          </div>
        </div>
     </div>

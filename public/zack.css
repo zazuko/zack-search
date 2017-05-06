@@ -44,6 +44,43 @@
     margin: 0;
 }
 
+.spinner {
+  width: 18px;
+  height: 18px;
+  margin: 23px 23px 23px 0px;
+  background-color: #66afe9;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+.paused{
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
 .result-level {
     width: 20px;
     height: 48px;
@@ -125,6 +162,29 @@
     color: red;
 }
 
+.type-filter {
+    color: white;
+    border-color: white;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 110%;
+    margin-top: 22px;
+    float: right;
+}
+
+.type-filter:hover {
+    border-color: #ddd;
+    background-color: white;
+    color: black;
+}
+
+
 .filterable {
     border-color: #ddd;
     border-width: 1px;
@@ -159,16 +219,6 @@
    margin-top: 4px;
    color: green;
    content: "⊕";
-}
-
-.zack-query-box .filterable {
-    font-size: 110%;
-    margin-top: 22px;
-    float: right;
-}
-
-.zack-query-box .filterable:after {
-    font-size: 110%;
 }
 
 .vertical-text {
