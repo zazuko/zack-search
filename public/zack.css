@@ -45,9 +45,9 @@
 }
 
 .spinner {
-  width: 18px;
-  height: 18px;
-  margin: 23px 23px 23px 0px;
+  width: 20px;
+  height: 20px;
+  margin: 0px; 
   background-color: #66afe9;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
