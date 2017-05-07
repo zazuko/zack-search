@@ -255,6 +255,7 @@
 .result-hierarchy li a {
   color: white;
   text-decoration: none; 
+  height: 19px;
   padding: 0px 0 0px 50px;
   position: relative; 
   display: block;
