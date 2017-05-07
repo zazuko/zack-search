@@ -47,7 +47,7 @@
 .spinner {
   width: 20px;
   height: 20px;
-  margin: 0px; 
+  margin-left: 7px; 
   background-color: #66afe9;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
@@ -296,6 +296,7 @@
 .clusterize-scroll{
   overflow: auto;
   max-height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .clusterize-extra-row.clusterize-keep-parity{
