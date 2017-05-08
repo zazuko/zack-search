@@ -9,6 +9,10 @@
     z-index: 10000;
 }
 
+.zack-query-group {
+    margin-bottom: 0;
+}
+
 .zack-filter {
     padding-top: 2px;
 }
