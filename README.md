@@ -13,7 +13,7 @@ A highly adaptable HTML5 only component which enables interactive access and to 
 
   `npm start`
 
-## Configure / Development
+## Configure / Development
 
 * Change the config inside the HTML
 
