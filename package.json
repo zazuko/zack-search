@@ -28,7 +28,7 @@
     "shelljs": "^0.7.8",
     "sparql-http-client": "^1.0.0",
     "sparql-search-result-list": "^1.1.0",
-    "uglify-js": "^2.8.29"
+    "uglify-js": "2.7.3"
   },
   "license": "MIT",
   "scripts": {
