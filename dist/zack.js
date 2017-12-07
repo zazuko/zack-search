@@ -171,21 +171,74 @@ var d3 = require('d3')
 SparqlClient.types.select.operation = SparqlClient.prototype.postQuery
 
 function Histogram (options) {
+
+  // - Set options -
+
   this.options = options || {}
 
-  this.margin = this.options.margin || {top: 0, right: 0, bottom: 0, left: 0}
-  this.height = this.options.height || 40
+  this.margin = this.options.margin || {top: 0, right: 0, bottom: 20, left: 0}
+  this.height = this.options.height || 60
 
-  this.histogram = d3.select('#timeline-container')
-    .append('g')
-    .attr('id', 'histogram')
-    .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')')
+  // get different sizes defined by windows size
+  this.width = document.getElementById('zack-timeline').offsetWidth
+  this.innerWidth = this.width - this.margin.left - this.margin.right
+  this.innerHeight = this.height - this.margin.top - this.margin.bottom
+
+  // - Set up container -
+
+  // main container (TODO change the name)
+  this.timelineContainer = d3.select('#zack-timeline').append('svg')
+      .attr('id', 'timeline-container')
+
+  // container for timeline only (TODO this will go)
+  this.timeline = this.timelineContainer.append('g')
+      .attr('id', 'timeline')
+      .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')')
+
+  // - Set up axis -
+
+  this.timelineAxis = this.timeline.append('g')
+      .attr('id', 'timeline-axis')
+      .attr('transform', 'translate(0, ' + this.innerHeight + ')')
+
+  // - Set up histogram -
+
+  this.histogram = d3.select('#timeline')
+      .append('g')
+      .attr('id', 'histogram')
+
+  // - Set up the brush -
+
+  // Container
+  this.brushContainer = this.timeline.append('g')
+      .attr('id', 'timeline-brush')
+
+  // Brush component
+  this.brush = d3.brushX()
+      .extent([[0,0], [this.innerWidth, this.innerHeight]]);
+
+  // Brush mount
+  this.brushContainer.call(this.brush)
+
+  // Add handle specifics
+  this.fromHandle = d3.select('.handle--w')
+    .attr('id', 'from-handle')
+    .attr('data-filter', '>=')
+    .attr('data-predicate', 'http://www.w3.org/2006/time#intervalStarts')
+
+  this.toHandle = d3.select('.handle--e')
+    .attr('id', 'to-handle')
+    .attr('data-filter', '<=')
+    .attr('data-predicate', 'http://www.w3.org/2006/time#intervalStarts')
+
 }
 
 Histogram.prototype.name = 'Histogram'
 
 Histogram.prototype.init = function (app) {
   var self = this
+
+  // Set up app, cient, query builder
 
   this.app = app
   this.client = new SparqlClient({
@@ -200,6 +253,9 @@ Histogram.prototype.init = function (app) {
     self.renderHistogram = true
   })
 
+ // this.app.events.resultMetadata.on(this.render.bind(this))
+
+  // Render
   this.app.events.fetched.on(function () {
     setTimeout(function () {
       if (self.renderHistogram && !self.app.isFetching) {
@@ -208,7 +264,9 @@ Histogram.prototype.init = function (app) {
     }, 1)
   })
 
+  // Resize handler
   this.app.events.resize.on(debounce(this.render.bind(this), 500))
+
 }
 
 Histogram.prototype.clear = function () {
@@ -216,6 +274,24 @@ Histogram.prototype.clear = function () {
 }
 
 Histogram.prototype.render = function () {
+
+  // - Resize -
+
+  // force remove (TODO consider data update instead)
+  this.clear();
+
+  // update width in case of resize
+  this.width = document.getElementById('zack-timeline').offsetWidth
+  this.innerWidth = this.width - this.margin.left - this.margin.right
+
+  // resize container (explicit margin convention)
+  this.timelineContainer
+    .attr('width', this.innerWidth + this.margin.left + this.margin.right)
+    .attr('height', this.innerHeight + this.margin.top + this.margin.bottom)
+
+
+  // - Formulate query and set-up request -
+
   var searchString = this.app.searchText
 
   var query = this.buildQuery()
@@ -230,29 +306,158 @@ Histogram.prototype.render = function () {
 
   this.request = cancelableFetch(this.client.selectQuery(query))
 
+
+  // - Date Extent -
+
+  // get data extent from search
+  var resultList = this.app.findPlugin('ResultList')
+
+  var start = new Date()
+  var end = new Date()
+
+  if (resultList) {
+    start = resultList.resultList.start
+    end = resultList.resultList.end
+  }
+
+  console.log('result: ', { start: start, end: end });
+
+
+  // - Scale -
+
+  this.x = d3.scaleUtc()
+    .domain([start, end])
+    .range([0, this.innerWidth])
+
+
+  // - Axis -
+
+  // Axis component
+  var resolutionMonth = d3.timeYears(start, end).length <= Math.floor(this.innerWidth / 100)
+
+  var updTicks = [start, end]
+      .concat(this.x.ticks())
+      .sort(function(a,b) {
+        return a - b
+      })
+
+  this.xAxis = d3.axisBottom()
+    .scale(this.x)
+    .tickValues(updTicks)
+    .tickSize(-this.innerHeight)
+    .tickFormat(resolutionMonth ? d3.timeFormat('%b %Y') : d3.timeFormat('%Y'))
+    // .tickValues(
+    //     [start, end].concat( // add the first and last year
+    //         d3.scaleUtc().domain(this.x.domain()) // use UTC domain
+    //           .ticks(Math.floor(this.innerWidth / 100)) // get ticks roughly 50px appart
+    //           .slice(0, -1) // remove the first and last tick
+    //     )
+    // )
+
+
+  // Set transition
+  var t = d3.transition().duration(400)
+
+  // Draw Axis
+  this.timelineAxis
+    .transition(t)
+    .call(this.xAxis)
+
+
+
+
+  // - Brush handler - 
+  
+  var zoom = function () {
+
+    // update axis
+    that.timelineAxis.transition(t).call(that.xAxis)
+
+    // update handles
+    var newFromDate = that.x.domain()[0].toISOString(),
+        newToDate = that.x.domain()[1].toISOString()
+
+    that.fromHandle.attr('data-value', newFromDate)
+    that.toHandle.attr('data-value', newToDate)
+
+    // trigger event
+    that.fromHandle.node().dispatchEvent(new Event('change'))
+    that.toHandle.node().dispatchEvent(new Event('change'))
+
+  }
+
+  var brushended = function (that) {
+
+    var area = d3.event.selection;
+    
+    if (!area) return 
+
+    // If an area is selected adjust the domain...
+    that.x.domain([area[0], area[1]].map(that.x.invert, that.x))
+
+    console.log('domain: ', that.x.domain())
+
+    // ...and clear the brush.
+    that.brushContainer.call(that.brush.move, null)
+
+    // zoom() will move our elements.
+    zoom();
+
+  }
+
+  var reset = function (that) {
+
+    that.fromHandle.attr('data-value', null)
+    that.toHandle.attr('data-value', null)
+
+    that.fromHandle.node().dispatchEvent(new Event('change'))
+    that.toHandle.node().dispatchEvent(new Event('change'))
+
+  }
+
+
+  // Init brush listener
+  this.brush.on('end', function () {
+      brushended(that)
+    })
+
+  // Reset brush
+  d3.selectAll('.zack-meta.pull-right')
+    .style('cursor', 'pointer')
+    .on('mousedown', function() {
+      reset(that);
+    })
+
+
+  // - Bar render -
+
+  // Send async request
   this.request.then(function (res) {
     return res.json()
   }).then(function (histData) {
     var data = histData.results.bindings[0].bucket ? histData.results.bindings : []
 
+    console.log('histData', data);
+
     var scale = d3.scalePow()
       .exponent(0.5)
       .domain([0, d3.max(data, function (d) { return parseInt(d.histo.value) })])
-      .range([0, that.height])
+      .range([0, that.innerHeight])
 
-/*  var colorScale = d3.scalePow()
-      .exponent(0.5)
-      .domain([0, d3.max(data, function(d) {return parseInt(d.histo.value)})])
-      .range(["darkblue","steelblue"])
-*/
+    /*  var colorScale = d3.scalePow()
+          .exponent(0.5)
+          .domain([0, d3.max(data, function(d) {return parseInt(d.histo.value)})])
+          .range(["darkblue","steelblue"])
+    */
+
     that.histogram.selectAll('.bar')
       .data(data)
     .enter().append('rect')
       .attr('class', 'bar')
       .attr('x', function (d) { return d.bucket.value })
       .attr('width', '1px')
-//      .attr("fill", function(d) { return colorScale(d.histo.value) })
-      .attr('y', function (d) { return that.height - scale(d.histo.value) })
+      // .attr("fill", function(d) { return colorScale(d.histo.value) })
+      .attr('y', function (d) { return that.innerHeight - scale(d.histo.value) })
       .attr('height', function (d) { return scale(d.histo.value) })
         .append('title')
         .text(function (d) { return that.tooltip(d.histo.value, new Date(d.bucket_start.value), new Date(d.bucket_end.value)) })
@@ -502,14 +707,14 @@ renderer.renderResult = function (page, subject) {
 
   var reference = '<span><i>' + referenceString + '</i></span>'
 
-//  var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
-//  var maintenanceAgency = ''
-//  if (maintenanceAgencyCode) {
-//    maintenanceAgency = '<div data-filterable="="' +
-//      ' data-predicate="' + maintenanceAgencyCode.predicate.toString() + '" ' +
-//      ' data-value="' + maintenanceAgencyCode.object.toString() + '" ' +
-//      ' class="filterable" onclick="app.search.addFilter(this)">' + maintenanceAgencyCode.object.toString() + '</div>'
-//  }
+  //  var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
+  //  var maintenanceAgency = ''
+  //  if (maintenanceAgencyCode) {
+  //    maintenanceAgency = '<div data-filterable="="' +
+  //      ' data-predicate="' + maintenanceAgencyCode.predicate.toString() + '" ' +
+  //      ' data-value="' + maintenanceAgencyCode.object.toString() + '" ' +
+  //      ' class="filterable" onclick="app.search.addFilter(this)">' + maintenanceAgencyCode.object.toString() + '</div>'
+  //  }
 
   var conceptTags = page.match(subject, 'http://data.alod.ch/alod/conceptTag').toArray()
   var conceptTagDivs = '<div class="result-tags">'
@@ -693,6 +898,8 @@ function Search () {
   this.filters = []
   this.staticFilters = []
 }
+
+Search.prototype.name = 'Search'
 
 Search.prototype.init = function (app) {
   var self = this
@@ -878,6 +1085,8 @@ function Timeline (options) {
       .attr('id', 'timeline-handles')
       .attr('transform', 'translate(0, -' + this.margin.top + ')')
 
+
+  // TODO not ported!
   var that = this
   var move = function (d, i, s) {
     if (s[0].id === 'from-handle') {
@@ -889,17 +1098,29 @@ function Timeline (options) {
   }
   var filter = function (d, i, s) {
     if (s[0].id === 'from-handle') {
+
       var newFromDate = that.x.invert(d3.event.x - that.margin.left).toISOString()
+
       if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) < new Date(newFromDate))) {
+
         d3.select(s[0]).attr('data-value', newFromDate)
         d3.select(s[0]).style('fill', 'red')
+
       } else {
+
         d3.select(s[0]).attr('data-value', null)
         d3.select(s[0]).style('fill', null)
+
       }
+
       s[0].dispatchEvent(new Event('change'))
+
     }
+
     var newToDate = that.x.invert(d3.event.x - that.margin.left + that.handleWidth).toISOString()
+
+    console.log('newToDate', newToDate);
+
     if (s[0].id === 'to-handle') {
       if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) > new Date(newToDate))) {
         d3.select(s[0]).attr('data-value', newToDate)
@@ -915,6 +1136,7 @@ function Timeline (options) {
 
   Timeline.prototype.name = 'Timeline'
 
+  // TODO not ported - this will be handled by d3-brush ...
   var drag = d3.drag().on('drag', move).on('end', filter)
 
   this.fromHandle = this.timelineHandles.append('rect')
@@ -941,6 +1163,8 @@ function Timeline (options) {
       .attr('x', this.width - this.margin.left - this.margin.right - this.handleWidth)
       .call(drag)
 
+  // ...
+
   // axis element
   this.timelineAxis = this.timeline.append('g')
       .attr('id', 'timeline-axis')
@@ -957,8 +1181,12 @@ Timeline.prototype.render = function () {
   var start = new Date()
   var end = new Date()
 
+  // debugger
+
   var resultList = this.app.findPlugin('ResultList')
   var histogram = this.app.findPlugin('Histogram')
+
+    console.log('resultLis (timeline)', resultList);
 
   if (resultList) {
     start = resultList.resultList.start
@@ -1092,6 +1320,9 @@ Zack.prototype.findPlugin = function (name) {
 Zack.prototype.getQuery = function (endpointUrl, id) {
   return this.options.queries[this.options.endpoints[endpointUrl].queries[id]]
 }
+
+
+// LV each plugin will be triggered with its init method
 
 Zack.prototype.initPlugins = function () {
   var self = this
@@ -21387,30 +21618,35 @@ utils.intFromLE = intFromLE;
 
 },{"bn.js":36,"minimalistic-assert":123,"minimalistic-crypto-utils":124}],101:[function(require,module,exports){
 module.exports={
-  "_from": "elliptic@^6.0.0",
+  "_args": [
+    [
+      "elliptic@6.4.0",
+      "/Users/lars/Google Drive/viz/projects/work/zazuko/code/zack-search"
+    ]
+  ],
+  "_from": "elliptic@6.4.0",
   "_id": "elliptic@6.4.0",
   "_inBundle": false,
   "_integrity": "sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=",
   "_location": "/browserify/elliptic",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "elliptic@^6.0.0",
+    "raw": "elliptic@6.4.0",
     "name": "elliptic",
     "escapedName": "elliptic",
-    "rawSpec": "^6.0.0",
+    "rawSpec": "6.4.0",
     "saveSpec": null,
-    "fetchSpec": "^6.0.0"
+    "fetchSpec": "6.4.0"
   },
   "_requiredBy": [
     "/browserify/browserify-sign",
     "/browserify/create-ecdh"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
-  "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
-  "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/michael/Sandbox/zack-search/node_modules/browserify/node_modules/browserify-sign",
+  "_spec": "6.4.0",
+  "_where": "/Users/lars/Google Drive/viz/projects/work/zazuko/code/zack-search",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -21418,7 +21654,6 @@ module.exports={
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "bn.js": "^4.4.0",
     "brorand": "^1.0.1",
@@ -21428,7 +21663,6 @@ module.exports={
     "minimalistic-assert": "^1.0.0",
     "minimalistic-crypto-utils": "^1.0.0"
   },
-  "deprecated": false,
   "description": "EC cryptography",
   "devDependencies": {
     "brfs": "^1.4.3",

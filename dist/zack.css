@@ -333,15 +333,26 @@
   cursor: ew-resize;
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
+#timeline-axis path {
+  fill: #EBEBEB;
+  stroke: #EBEBEB;
   shape-rendering: crispEdges;
 }
 
-.axis text {
-  font: 10px sans-serif;
+
+#timeline-axis line {
+  stroke: #fff;
+  stroke-width: 2;
+  shape-rendering: crispEdges;
 }
 
+#timeline-axis text {
+  font: 10px sans-serif;
+  fill: #444;
+}
+
+
+#histogram rect {
+  fill: #666;
+}
 
