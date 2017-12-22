@@ -2,8 +2,9 @@
 .zack-content {
     position: relative;
     width: 100%;
-    height: calc(100vh - 230px);
+    height: calc(100vh - 290px);
 }
+
 
 .zack-query-box {
     z-index: 10000;
@@ -320,6 +321,30 @@
     display: none;
 }
 
+/* Zack-overview styles */
+
+.col-lg-2 {
+  float: right !important; /* to trump media query better way than !important: http://tiny.cc/bt-override */
+}
+
+button.zack-reset {
+  display: inline-block;
+  font-size: 10px;
+  margin: 0;
+  padding: 0.05em 0.25em;
+  outline: none;
+  color: #666;
+  background-color: #f0f0f0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #e6e6e6;
+}
+
+
+
 /* Timline SVG Styles */
 .svg-bar {
   fill: steelblue;
@@ -347,8 +372,8 @@
 }
 
 #timeline-axis text {
-  font: 10px sans-serif;
-  fill: #444;
+  font: 12px sans-serif;
+  fill: #666;
 }
 
 

@@ -299,6 +299,7 @@ Histogram.prototype.render = function () {
     .replace(/\${width}/g, document.getElementById('timeline-container').width.baseVal.value - this.margin.left - this.margin.right)
 
   var that = this
+  var t = d3.transition().duration(400)
 
   if (this.request) {
     this.request.cancel()
@@ -322,6 +323,10 @@ Histogram.prototype.render = function () {
 
   console.log('result: ', { start: start, end: end });
 
+  // Only show histogram/timeline if both dates come back
+  if (!start && !end) { 
+    d3.select('.zack-overview').transition(t).style('opacity', 0)
+  }
 
   // - Scale -
 
@@ -346,17 +351,7 @@ Histogram.prototype.render = function () {
     .tickValues(updTicks)
     .tickSize(-this.innerHeight)
     .tickFormat(resolutionMonth ? d3.timeFormat('%b %Y') : d3.timeFormat('%Y'))
-    // .tickValues(
-    //     [start, end].concat( // add the first and last year
-    //         d3.scaleUtc().domain(this.x.domain()) // use UTC domain
-    //           .ticks(Math.floor(this.innerWidth / 100)) // get ticks roughly 50px appart
-    //           .slice(0, -1) // remove the first and last tick
-    //     )
-    // )
 
-
-  // Set transition
-  var t = d3.transition().duration(400)
 
   // Draw Axis
   this.timelineAxis
@@ -422,8 +417,7 @@ Histogram.prototype.render = function () {
     })
 
   // Reset brush
-  d3.selectAll('.zack-meta.pull-right')
-    .style('cursor', 'pointer')
+  d3.selectAll('.zack-reset')
     .on('mousedown', function() {
       reset(that);
     })
@@ -21618,30 +21612,35 @@ utils.intFromLE = intFromLE;
 
 },{"bn.js":36,"minimalistic-assert":123,"minimalistic-crypto-utils":124}],101:[function(require,module,exports){
 module.exports={
-  "_from": "elliptic@^6.0.0",
+  "_args": [
+    [
+      "elliptic@6.4.0",
+      "/Users/lars/Google Drive/viz/projects/work/zazuko/code/zack-search"
+    ]
+  ],
+  "_from": "elliptic@6.4.0",
   "_id": "elliptic@6.4.0",
   "_inBundle": false,
   "_integrity": "sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=",
   "_location": "/browserify/elliptic",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "elliptic@^6.0.0",
+    "raw": "elliptic@6.4.0",
     "name": "elliptic",
     "escapedName": "elliptic",
-    "rawSpec": "^6.0.0",
+    "rawSpec": "6.4.0",
     "saveSpec": null,
-    "fetchSpec": "^6.0.0"
+    "fetchSpec": "6.4.0"
   },
   "_requiredBy": [
     "/browserify/browserify-sign",
     "/browserify/create-ecdh"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
-  "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
-  "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/michael/Sandbox/zack-search/node_modules/browserify/node_modules/browserify-sign",
+  "_spec": "6.4.0",
+  "_where": "/Users/lars/Google Drive/viz/projects/work/zazuko/code/zack-search",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -21649,7 +21648,6 @@ module.exports={
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "bn.js": "^4.4.0",
     "brorand": "^1.0.1",
@@ -21659,7 +21657,6 @@ module.exports={
     "minimalistic-assert": "^1.0.0",
     "minimalistic-crypto-utils": "^1.0.0"
   },
-  "deprecated": false,
   "description": "EC cryptography",
   "devDependencies": {
     "brfs": "^1.4.3",

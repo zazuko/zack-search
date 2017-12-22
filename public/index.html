@@ -81,6 +81,11 @@
             <span id="count" class="zack-count zack-big"></span> <i>Results</i>
           </div>
         </div>
+        <div class="col-lg-2">
+          <button class="zack-reset pull-right">
+            Reset
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -111,8 +116,8 @@
       //   margin: {top: 40, right: 20, bottom: 0, left: 20}
       // }),
       new Zack.Histogram({
-        margin: {top: 0, right: 20, bottom: 20, left: 20},
-        height: 60
+        margin: {top: 0, right: 20, bottom: 40, left: 20},
+        height: 120
       }),
       new Zack.TypeFilter({
         predicate: 'http://data.archiveshub.ac.uk/def/level',
