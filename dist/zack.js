@@ -186,11 +186,11 @@ function Histogram (options) {
 
   // - Set up container -
 
-  // main container (TODO change the name)
+  // main container
   this.timelineContainer = d3.select('#zack-timeline').append('svg')
       .attr('id', 'timeline-container')
 
-  // container for timeline only (TODO this will go)
+  // container for timeline only
   this.timeline = this.timelineContainer.append('g')
       .attr('id', 'timeline')
       .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')')
@@ -253,7 +253,6 @@ Histogram.prototype.init = function (app) {
     self.renderHistogram = true
   })
 
- // this.app.events.resultMetadata.on(this.render.bind(this))
 
   // Render
   this.app.events.fetched.on(function () {
@@ -277,7 +276,7 @@ Histogram.prototype.render = function () {
 
   // - Resize -
 
-  // force remove (TODO consider data update instead)
+  // force remove
   this.clear();
 
   // update width in case of resize
@@ -396,7 +395,7 @@ Histogram.prototype.render = function () {
     that.brushContainer.call(that.brush.move, null)
 
     // zoom() will move our elements.
-    zoom();
+    zoom()
 
   }
 
@@ -422,6 +421,28 @@ Histogram.prototype.render = function () {
       reset(that);
     })
 
+  d3.selectAll('.overlay')
+    .on('dblclick', function() {
+      reset(that);
+    })
+
+
+  // Start visual cue during load (histogram background opacity change)
+  var axisDomain = this.timelineAxis.select('.domain')
+
+  var timer = d3.interval(function(elapsed) {
+
+    // Map elapsed time to opacity values between 0.3 and 1
+    var opacity = 0.3 * Math.sin(2*Math.PI/2000 * elapsed) + 0.7
+    axisDomain.style('fill-opacity', opacity)
+
+  })
+
+
+
+
+
+
 
   // - Bar render -
 
@@ -431,8 +452,11 @@ Histogram.prototype.render = function () {
   }).then(function (histData) {
     var data = histData.results.bindings[0].bucket ? histData.results.bindings : []
 
-    console.log('histData', data);
+    // Stop loading cue
+    timer.stop()
+    axisDomain.style('fill-opacity', 1)
 
+    // Build bars
     var scale = d3.scalePow()
       .exponent(0.5)
       .domain([0, d3.max(data, function (d) { return parseInt(d.histo.value) })])
@@ -456,10 +480,28 @@ Histogram.prototype.render = function () {
         .append('title')
         .text(function (d) { return that.tooltip(d.histo.value, new Date(d.bucket_start.value), new Date(d.bucket_end.value)) })
 
+
+    // Highlight the axis' start and end value
+    var tickExtent = that.timelineAxis.selectAll('g.tick').filter(function(el, i, nodes) {
+      return i === 0 || i === nodes.length - 1
+    })
+
+    tickExtent.selectAll('text').style('font-weight', 'bold')
+
+    // debugger
+
+
+
+
     that.request = null
   }).catch(function (err) {
+
+    // Stop loading cue
+    timer.stop()
+    axisDomain.style('fill-opacity', 1)
+
     if (err.message === 'user cancelation') {
-      // canceled fetch
+
     }
   })
 
