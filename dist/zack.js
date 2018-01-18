@@ -320,12 +320,18 @@ Histogram.prototype.render = function () {
     end = resultList.resultList.end
   }
 
-  console.log('result: ', { start: start, end: end });
+  // console.log('result: ', { start: start, end: end });
+
 
   // Only show histogram/timeline if both dates come back
-  if (!start && !end) { 
-    d3.select('.zack-overview').transition(t).style('opacity', 0)
-  }
+  // var zackTimeline = d3.select('#zack-timeline')
+  // if (!start && !end) { 
+  //   this.timelineContainer.transition(t).style('opacity', 0)
+  // } else {
+  //   this.timelineContainer.transition(t).style('opacity', 1)
+  // }
+
+  this.timelineContainer.transition(t).style('opacity', (!start && !end) ? 0 : 1)
 
   // - Scale -
 
