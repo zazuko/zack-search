@@ -346,6 +346,11 @@ button:hover {
 
 
 /* Timline SVG Styles */
+
+#zack-timeline {
+  padding-left: 0;
+}
+
 .svg-bar {
   fill: steelblue;
   shape-rendering: crispEdges;
