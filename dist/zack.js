@@ -338,10 +338,28 @@ Histogram.prototype.render = function () {
 
   var resolutionMonth = d3.timeYears(start, end).length <= Math.floor(this.innerWidth / 100)
 
+
+  function getTickNumberProxy(resolution, width) {
+
+    // var n;
+    // if (width >  760) { 
+    //   return n = resolution ? 5 : 10 
+    // } else if (width >  320) { 
+    //   return n = resolution ? 3 : 5
+    // } else { return n = 2 }
+    var n;
+    if (width >  760) { return n = resolution ? 5 : 10 } 
+    if (width >  320) { return n = resolution ? 3 : 5 } 
+    return n = 2
+
+  }
+
   // Fewer ticks for axis with longer month labels
-  var tickNumberProxy = resolutionMonth ? 5 : 10
+  // var tickNumberProxy = resolutionMonth ? 5 : 10
+  var tickNumberProxy = getTickNumberProxy(resolutionMonth, window.innerWidth)
   var tickValuesArray = this.x.ticks(tickNumberProxy)
 
+  console.log(resolutionMonth, window.innerWidth, tickNumberProxy)
 
   // tick helper functions
 
