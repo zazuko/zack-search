@@ -108,6 +108,12 @@
           count: 'stardogMeta',
           histogram: 'stardogHistogram',
           textmatch: 'stardogFulltextPart'
+
+        }
+      },
+      'https://query.wikidata.org/sparql': {
+        queries: {
+          tagSearch: 'wikidataHlsTagSearch'
         }
       }
     },
@@ -126,6 +132,9 @@
          'http://data.alod.ch/alod/level/file': {icon: 'fa-folder-open', title: 'Files'},
          'http://data.alod.ch/alod/level/item': {icon: 'fa-file', title: 'Items'}
         }
+      }),
+      new Zack.Tagger({
+        endpointUrl: 'https://query.wikidata.org/sparql'
       })
     ]
   }
