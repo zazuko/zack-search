@@ -189,6 +189,34 @@
     color: black;
 }
 
+.actionable {
+    background-color: #ddd;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.actionable:hover {
+    border-color: #2196f3;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
 
 .filterable {
     border-color: #ddd;
@@ -386,3 +414,63 @@ button:hover {
   fill: #666;
 }
 
+
+
+.twitter-typeahead {
+	width: 100%;
+	float: left;
+}
+
+.twitter-typeahead .tt-hint {
+	top: 1px !important;
+}
+
+.twitter-typeahead .tt-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display: none;
+	float: left;
+	min-width: 160px;
+	width: 100%;
+	padding: 5px 0;
+	list-style: none;
+	text-align: left;
+	border: none;
+	background-clip: padding-box;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion > a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.846;
+	color: #666;
+	white-space: nowrap;
+	font-size: 15px;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion > a .tt-highlight {
+	display: inline;
+	padding: 0em 0.2em 0em;
+	font-weight: bold;
+	line-height: 1;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25em;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion > a:hover {
+	text-decoration: none;
+	color: #141414;
+	background-color: #eeeeee;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion.tt-cursor {
+	transition: all 0.2s;
+	text-decoration: none;
+	color: #141414;
+	background-color: #eeeeee;
+}
