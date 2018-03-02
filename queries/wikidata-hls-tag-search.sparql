@@ -2,7 +2,7 @@ SELECT ?concept ?hls ?label ?description WHERE {
   ?concept wdt:P902 ?hls .
   ?concept rdfs:label ?label .
   ?concept schema:description ?description .
-  FILTER regex(LCASE(?label), "^${search}")
+  FILTER regex(LCASE(?label), "${search}")
   FILTER (lang(?description) = "${language}")
   FILTER (lang(?label) = "${language}")
 } ORDER by ?label LIMIT 8
