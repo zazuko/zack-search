@@ -25,7 +25,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><i class="fa fa-question"></i></a></li>
+          <li><a id="zack-intro" href="#"><i class="fa fa-question"></i></a></li>
           <li class="active"><a href="#">Search</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Participating Archives <span class="caret"></span></a>
@@ -135,6 +135,15 @@
       }),
       new Zack.Tagger({
         endpointUrl: 'https://query.wikidata.org/sparql'
+      }),
+      new Zack.Intro({
+        defaults: {
+          classes: 'shepherd-theme-arrows',
+          showCancelLink: true
+        },
+        steps: [
+          { title: 'Intro...', text: 'This is an example intro...', attachTo: { element: '#query', on: 'bottom' }, scrollTo: true, buttons: 'auto' }
+        ]
       })
     ]
   }

@@ -29,6 +29,7 @@
     "shelljs": "^0.7.8",
     "sparql-http-client": "^1.0.0",
     "sparql-search-result-list": "^1.1.0",
+    "tether-shepherd": "^1.8.1",
     "uglify-js": "2.7.3"
   },
   "license": "MIT",
