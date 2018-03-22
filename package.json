@@ -1,7 +1,7 @@
 {
   "name": "zack-search",
   "description": "Search interface for Zack",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/zazuko/zack-search",
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
     "browserify": "^13.0.1",
     "cancelable-fetch": "^1.0.0",
     "color-hash": "^1.0.3",
+    "corejs-typeahead": "^1.2.1",
     "crab-event": "^0.1.0",
     "d3": "^4.10.0",
     "debounce": "^1.0.0",

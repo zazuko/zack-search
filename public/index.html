@@ -66,6 +66,11 @@
             <span id="count" class="zack-count zack-big"></span> <i>Results</i>
           </div>
         </div>
+        <div class="col-lg-2">
+          <button class="zack-reset pull-right">
+            Reset
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -88,15 +93,19 @@
           count: 'stardogMeta',
           histogram: 'stardogHistogram',
           textmatch: 'stardogFulltextPart'
+
+        }
+      },
+      'https://query.wikidata.org/sparql': {
+        queries: {
+          tagSearch: 'wikidataHlsTagSearch'
         }
       }
     },
     plugins: [
-      new Zack.Timeline({
-        margin: {top: 40, right: 20, bottom: 0, left: 20}
-      }),
       new Zack.Histogram({
-        margin: {top: 0, right: 20, bottom: 0, left: 20}
+        margin: {top: 0, right: 35, bottom: 40, left: 35},
+        height: 120
       }),
       new Zack.TypeFilter({
         predicate: 'http://data.archiveshub.ac.uk/def/level',
@@ -108,6 +117,9 @@
          'http://data.alod.ch/alod/level/file': {icon: 'fa-folder-open', title: 'Files'},
          'http://data.alod.ch/alod/level/item': {icon: 'fa-file', title: 'Items'}
         }
+      }),
+      new Zack.Tagger({
+        endpointUrl: 'https://query.wikidata.org/sparql'
       })
     ]
   }
