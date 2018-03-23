@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" integrity="sha256-LxKiHTQko0DUCUSgrIK23SYMymvfuj8uxXmblBvVWm0=" crossorigin="anonymous">
+  <!--<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour.min.css" rel="stylesheet" integrity="sha256-r7R5NjcsiLK3ubv/Ee7yBl5n9zV+xoj1K6kzJ4E9jBU=" crossorigin="anonymous">-->
+  <link href="//cdn.jsdelivr.net/npm/bootstrap-tour@0.12.0/build/css/bootstrap-tour.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 
   <link href="zack.css" rel="stylesheet">
 </head>
@@ -90,7 +92,10 @@
     </div>
   </div>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.10/bootstrap-native.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour.min.js" integrity="sha256-AFoIN2Z5u5QDw8n9X0FoP/p1ZhE1xDnsgHlCMWE0yYQ=" crossorigin="anonymous"></script>-->
+<script src="//cdn.jsdelivr.net/npm/bootstrap-tour@0.12.0/build/js/bootstrap-tour.min.js" crossorigin="anonymous"></script>
 <script src="zack.min.js"></script>
 <script>
   var options = {
@@ -125,7 +130,7 @@
       new Zack.TypeFilter({
         predicate: 'http://data.archiveshub.ac.uk/def/level',
         values: {
-         'http://data.alod.ch/alod/level/archive': {icon: 'fa-university', title: 'Archive'},
+         'http://data.alod.ch/alod/level/archive': {icon: 'fa-university', title: 'Archives'},
          'http://data.alod.ch/alod/level/fond': {icon: 'fa-archive', title: 'Fonds'},
          'http://data.alod.ch/alod/level/subfond': {icon: 'fa-archive', title: 'Sub-Fonds'},
          'http://data.alod.ch/alod/level/series': {icon: 'fa-sitemap', title: 'Series'},
@@ -137,12 +142,18 @@
         endpointUrl: 'https://query.wikidata.org/sparql'
       }),
       new Zack.Intro({
-        defaults: {
-          classes: 'shepherd-theme-arrows',
-          showCancelLink: true
-        },
+        backdrop: true,
+        orphan: true,
         steps: [
-          { title: 'Intro...', text: 'This is an example intro...', attachTo: { element: '#query', on: 'bottom' }, scrollTo: true, buttons: 'auto' }
+          { element: '#query', title: 'Filter by Query', content: 'Enter keywords to filter the results by.' },
+          { element: '#type-filters', placement: 'bottom', title: 'Filter by Hierarchy Level', content: 'Filter the results to a specific hierarchy level.<dl>'
+            +'<dt>Archives</dt><dd>an independent institution</dd>'
+            +'<dt>Fonds</dt><dd>...</dd>'
+            +'<dt>Sub-Fonds</dt><dd>...</dd>'
+            +'<dt>Series</dt><dd>a series of related collections or documents</dd>'
+            +'<dt>Files</dt><dd>a collection of documents</dd>'
+            +'<dt>Items</dt><dd>an individual documents</dd></dl>' },
+          { element: '.result-tags .actionable:first', title: 'Contribute Tags', content: 'You can contribute to the project by adding your own tags.' }
         ]
       })
     ]
