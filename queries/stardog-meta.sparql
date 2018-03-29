@@ -11,7 +11,7 @@ CONSTRUCT {
   _:b0 :queryEnd ?queryend.
 }
 WHERE {
-  { 
+  {
     #provides the overall count of all documents for the query
     SELECT (COUNT(?sub) as ?count) {
       ${textmatch}
@@ -21,15 +21,20 @@ WHERE {
   UNION
   {
     #provides the first and last available document timestamp for the query
-    SELECT (MIN(?resourcestart) as ?querystart) (MAX(?resourceend) as ?queryend) {
+    SELECT (MIN(?resourcestart) as ?querystart) {
       ${textmatch}
       ${filters}
-      OPTIONAL {
-        ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
-      }
-      OPTIONAL {
-        ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .  
-      }
+
+      ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .  
+    }
+  }
+  UNION
+  {
+    SELECT (MAX(?resourceend) as ?queryend) {
+      ${textmatch}
+      ${filters}
+
+      ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
     }
   }
 }
