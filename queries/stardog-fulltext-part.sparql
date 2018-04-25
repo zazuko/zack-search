@@ -1,2 +1,2 @@
-?sub skos:hiddenLabel ?l .
+?sub <http://www.ica.org/standards/RiC/ontology#title> ?l .
 (?l ?score) <tag:stardog:api:property:textMatch> "${searchString}" .
