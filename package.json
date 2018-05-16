@@ -12,33 +12,44 @@
   },
   "dependencies": {
     "bluebird": "^3.4.0",
-    "browserify": "^13.0.1",
     "cancelable-fetch": "^1.0.0",
     "color-hash": "^1.0.3",
     "corejs-typeahead": "^1.2.1",
     "crab-event": "^0.1.0",
     "d3": "^4.10.0",
     "debounce": "^1.0.0",
-    "exorcist": "^0.4.0",
-    "glob": "^7.1.2",
     "inherits": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
     "js-string-escape-cli": "^1.0.0",
     "lodash": "^4.14.1",
     "qs": "^6.5.0",
-    "shelljs": "^0.7.8",
     "sparql-http-client": "^1.0.0",
-    "sparql-search-result-list": "^1.1.0",
-    "uglify-js": "2.7.3"
+    "sparql-search-result-list": "^1.1.0"
   },
   "license": "MIT",
   "scripts": {
     "build": "node build.js",
-    "lint": "standard lib/*.js",
+    "lint": "eslint lib/*.js",
+    "test": "npm run build && npm run lint",
     "start": "http-server -P http://data.alod.ch dist/"
   },
   "devDependencies": {
-    "http-server": "^0.9.0",
-    "standard": "^8.0.0"
-  }
+    "babel-eslint": "^8.2.3",
+    "browserify": "^16.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-compat": "^2.2.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "exorcist": "^1.0.1",
+    "glob": "^7.1.2",
+    "http-server": "^0.11.1",
+    "shelljs": "^0.8.2",
+    "uglify-es": "^3.3.9"
+  },
+  "browserslist": [
+    "IE 11"
+  ]
 }
