@@ -11,18 +11,18 @@
     "url": "https://github.com/zazuko/zack-search/issues"
   },
   "dependencies": {
-    "bluebird": "^3.4.0",
+    "bluebird": "^3.5.1",
     "cancelable-fetch": "^1.0.0",
     "color-hash": "^1.0.3",
     "corejs-typeahead": "^1.2.1",
     "crab-event": "^0.1.0",
-    "d3": "^4.10.0",
-    "debounce": "^1.0.0",
+    "d3": "^4.13.0",
+    "debounce": "^1.1.0",
     "inherits": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
     "js-string-escape-cli": "^1.0.0",
-    "lodash": "^4.14.1",
-    "qs": "^6.5.0",
+    "lodash": "^4.17.10",
+    "qs": "^6.5.2",
     "sparql-http-client": "^1.0.0",
     "sparql-search-result-list": "^1.1.0"
   },

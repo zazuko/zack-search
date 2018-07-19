@@ -42339,9 +42339,10 @@ module.exports={
   "_args": [
     [
       "elliptic@6.4.0",
-      "/Volumes/repositories/zazuko/zack-search"
+      "/Users/michael/Sandbox/zack-search"
     ]
   ],
+  "_development": true,
   "_from": "elliptic@6.4.0",
   "_id": "elliptic@6.4.0",
   "_inBundle": false,
@@ -42364,7 +42365,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_spec": "6.4.0",
-  "_where": "/Volumes/repositories/zazuko/zack-search",
+  "_where": "/Users/michael/Sandbox/zack-search",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
