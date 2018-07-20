@@ -1036,7 +1036,7 @@ Search.prototype.init = function (app) {
   if (this.app.options.resultTypes) {
     this.app.options.resultTypes.forEach(function (resultType) {
       self.staticFilters.push({
-        operator: '=',
+        operator: 'IN',
         predicate: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
         termType: 'NamedNode',
         variable: 'resultType',
