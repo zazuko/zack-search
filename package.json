@@ -24,7 +24,7 @@
     "lodash": "^4.17.10",
     "qs": "^6.5.2",
     "sparql-http-client": "^1.0.0",
-    "sparql-search-result-list": "^1.1.0"
+    "sparql-search-result-list": "github:zazukoians/sparql-search-result-list"
   },
   "license": "MIT",
   "scripts": {
