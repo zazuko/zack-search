@@ -14,7 +14,6 @@
     "bluebird": "^3.5.1",
     "cancelable-fetch": "^1.0.0",
     "color-hash": "^1.0.3",
-    "corejs-typeahead": "^1.2.1",
     "crab-event": "^0.1.0",
     "d3": "^4.13.0",
     "debounce": "^1.1.0",
