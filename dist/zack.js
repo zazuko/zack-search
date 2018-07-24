@@ -1153,7 +1153,7 @@ Search.prototype.addFilter = function (label, operator, predicate, value, option
 module.exports = Search
 
 },{"./filter":12,"crab-event":81,"debounce":119,"qs":321}],19:[function(require,module,exports){
-/* global fetch */
+/* global fetch,$ */
 
 const isomorphicFetch = require('isomorphic-fetch')
 const Event = require('crab-event').Event
@@ -1248,8 +1248,8 @@ Tagger.prototype.create = function (iri) {
     $(this).find('input:visible:first').focus()
   })
 
-  this.modal = $('.modal').modal();
-  //this.modal.show()
+  this.modal = $('.modal').modal()
+  // this.modal.show()
 }
 
 Tagger.prototype.close = function () {
@@ -1259,8 +1259,8 @@ Tagger.prototype.close = function () {
   this.selected = null
 
   this.modal.hide()
-  $('body').removeClass('modal-open');
-  $('.modal-backdrop').remove();
+  $('body').removeClass('modal-open')
+  $('.modal-backdrop').remove()
 
   setTimeout(function () {
     document.body.removeChild(self.modalContainer)
