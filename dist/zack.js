@@ -1339,7 +1339,7 @@ TypeFilter.prototype.init = function (app) {
   const values = this.options.values
 
   let typeFilters = ''
-  for (const tf in values) {
+  for (let tf in values) {
     const color = colorHash.hex(tf.substring(tf.lastIndexOf('/') + 1, tf.length))
     typeFilters = '<div style="background-color:' + color + ' ;"' +
        'data-filterable="=" ' +
@@ -40391,7 +40391,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
   "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/michael/Sandbox/zack-search/node_modules/browserify-sign",
+  "_where": "/home/ths/zazuko/zack-search/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
