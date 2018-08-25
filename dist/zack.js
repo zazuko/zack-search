@@ -1339,7 +1339,7 @@ TypeFilter.prototype.init = function (app) {
   const values = this.options.values
 
   let typeFilters = ''
-  for (const tf in values) {
+  for (let tf in values) { // eslint-disable-line prefer-const
     const color = colorHash.hex(tf.substring(tf.lastIndexOf('/') + 1, tf.length))
     typeFilters = '<div style="background-color:' + color + ' ;"' +
        'data-filterable="=" ' +
