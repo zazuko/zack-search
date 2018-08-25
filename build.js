@@ -24,6 +24,6 @@ fs.writeFileSync('.build/queries.js', queries)
 mkdir('-p', 'dist')
 
 exec('browserify lib/dist.js --standalone Zack --debug | exorcist dist/zack.js.map > dist/zack.js')
-exec('uglifyjs dist/zack.js --source-map="content=\'dist/zack.js.map\',content=\'dist/zack.min.js.map\'" --output dist/zack.min.js')
+exec('uglifyjs dist/zack.js --source-map="content=\'dist/zack.js.map\'" --output dist/zack.min.js')
 
 cp('-r', 'public/*', 'dist/')
