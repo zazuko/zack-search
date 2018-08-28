@@ -11,6 +11,7 @@
     "url": "https://github.com/zazuko/zack-search/issues"
   },
   "dependencies": {
+    "@rdfjs/data-model": "^1.1.0",
     "bluebird": "^3.5.1",
     "cancelable-fetch": "^1.0.0",
     "color-hash": "^1.0.3",
