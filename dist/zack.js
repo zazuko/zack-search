@@ -21,6 +21,14 @@ function SparqlSearchResultList (options) {
     updateUrl: options.endpointUrl
   })
 
+  this.resultTypes = options.resultTypes.map(function (resultType) {
+    if (typeof resultType === 'string') {
+      return rdf.namedNode(resultType)
+    } else {
+      return resultType
+    }
+  })
+
   this.rows = []
 
   this.start = ''
@@ -125,7 +133,7 @@ SparqlSearchResultList.prototype.fetchPage = function (offset) {
 }
 
 SparqlSearchResultList.prototype.resultSubjects = function (page) {
-  var subjects = this.options.resultTypes.map(function (resultType) {
+  var subjects = this.resultTypes.map(function (resultType) {
     return page.match(null, terms.type, resultType).toArray().map(function (triple) {
       return triple.subject
     })
@@ -6759,7 +6767,8 @@ function objectToString(o) {
  * @param {Boolean} whether to execute at the beginning (`false`)
  * @api public
  */
-function debounce(func, wait, immediate){
+
+module.exports = function debounce(func, wait, immediate){
   var timeout, args, context, timestamp, result;
   if (null == wait) wait = 100;
 
@@ -6810,11 +6819,6 @@ function debounce(func, wait, immediate){
 
   return debounced;
 };
-
-// Adds compatibility for ES modules
-debounce.debounce = debounce;
-
-module.exports = debounce;
 
 },{}],17:[function(require,module,exports){
 (function (process,global,setImmediate){
@@ -39305,7 +39309,7 @@ renderer.init = function (metadata, options) {
   renderer.options = options
 }
 
-renderer.renderResult = function (page, subject) { console.log(arguments);
+renderer.renderResult = function (page, subject) {
   let rendering = ''
   const hierarchy = getHierarchy(page, subject)
   let hierarchyString = ''
@@ -73361,8 +73365,78 @@ Object.keys(d3Zoom).forEach(function (key) { exports[key] = d3Zoom[key]; });
 Object.defineProperty(exports, "event", {get: function() { return d3Selection.event; }});
 
 },{"d3-array":225,"d3-axis":226,"d3-brush":227,"d3-chord":228,"d3-collection":229,"d3-color":230,"d3-dispatch":231,"d3-drag":232,"d3-dsv":233,"d3-ease":234,"d3-force":235,"d3-format":236,"d3-geo":237,"d3-hierarchy":238,"d3-interpolate":239,"d3-path":240,"d3-polygon":241,"d3-quadtree":242,"d3-queue":243,"d3-random":244,"d3-request":245,"d3-scale":246,"d3-selection":247,"d3-shape":248,"d3-time":250,"d3-time-format":249,"d3-timer":251,"d3-transition":252,"d3-voronoi":253,"d3-zoom":254}],256:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16}],257:[function(require,module,exports){
+/**
+ * Returns a function, that, as long as it continues to be invoked, will not
+ * be triggered. The function will be called after it stops being called for
+ * N milliseconds. If `immediate` is passed, trigger the function on the
+ * leading edge, instead of the trailing. The function also has a property 'clear' 
+ * that is a function which will clear the timer to prevent previously scheduled executions. 
+ *
+ * @source underscore.js
+ * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
+ * @param {Function} function to wrap
+ * @param {Number} timeout in ms (`100`)
+ * @param {Boolean} whether to execute at the beginning (`false`)
+ * @api public
+ */
+function debounce(func, wait, immediate){
+  var timeout, args, context, timestamp, result;
+  if (null == wait) wait = 100;
+
+  function later() {
+    var last = Date.now() - timestamp;
+
+    if (last < wait && last >= 0) {
+      timeout = setTimeout(later, wait - last);
+    } else {
+      timeout = null;
+      if (!immediate) {
+        result = func.apply(context, args);
+        context = args = null;
+      }
+    }
+  };
+
+  var debounced = function(){
+    context = this;
+    args = arguments;
+    timestamp = Date.now();
+    var callNow = immediate && !timeout;
+    if (!timeout) timeout = setTimeout(later, wait);
+    if (callNow) {
+      result = func.apply(context, args);
+      context = args = null;
+    }
+
+    return result;
+  };
+
+  debounced.clear = function() {
+    if (timeout) {
+      clearTimeout(timeout);
+      timeout = null;
+    }
+  };
+  
+  debounced.flush = function() {
+    if (timeout) {
+      result = func.apply(context, args);
+      context = args = null;
+      
+      clearTimeout(timeout);
+      timeout = null;
+    }
+  };
+
+  return debounced;
+};
+
+// Adds compatibility for ES modules
+debounce.debounce = debounce;
+
+module.exports = debounce;
+
+},{}],257:[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -78256,30 +78330,36 @@ utils.intFromLE = intFromLE;
 
 },{"bn.js":179,"minimalistic-assert":425,"minimalistic-crypto-utils":426}],282:[function(require,module,exports){
 module.exports={
-  "_from": "elliptic@^6.0.0",
+  "_args": [
+    [
+      "elliptic@6.4.1",
+      "/home/bergi/projects/zazuko/alod/zack-search"
+    ]
+  ],
+  "_development": true,
+  "_from": "elliptic@6.4.1",
   "_id": "elliptic@6.4.1",
   "_inBundle": false,
   "_integrity": "sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==",
   "_location": "/elliptic",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "elliptic@^6.0.0",
+    "raw": "elliptic@6.4.1",
     "name": "elliptic",
     "escapedName": "elliptic",
-    "rawSpec": "^6.0.0",
+    "rawSpec": "6.4.1",
     "saveSpec": null,
-    "fetchSpec": "^6.0.0"
+    "fetchSpec": "6.4.1"
   },
   "_requiredBy": [
     "/browserify-sign",
     "/create-ecdh"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz",
-  "_shasum": "c2d0b7776911b86722c632c3c06c60f2f819939a",
-  "_spec": "elliptic@^6.0.0",
-  "_where": "/Users/michael/Sandbox/zack-search/node_modules/browserify-sign",
+  "_spec": "6.4.1",
+  "_where": "/home/bergi/projects/zazuko/alod/zack-search",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -78287,7 +78367,6 @@ module.exports={
   "bugs": {
     "url": "https://github.com/indutny/elliptic/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "bn.js": "^4.4.0",
     "brorand": "^1.0.1",
@@ -78297,7 +78376,6 @@ module.exports={
     "minimalistic-assert": "^1.0.0",
     "minimalistic-crypto-utils": "^1.0.0"
   },
-  "deprecated": false,
   "description": "EC cryptography",
   "devDependencies": {
     "brfs": "^1.4.3",
