@@ -31,25 +31,30 @@
     "build": "node build.js",
     "lint": "eslint lib/*.js",
     "test": "npm run build && npm run lint",
-    "start": "http-server -P http://data.alod.ch dist/"
+    "start": "http-server -P http://data.alod.ch dist/",
+    "watch": "webpack --watch --info-verbosity verbose --mode development --config default.webpack.config.js"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "browserify": "^16.2.2",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
     "eslint-plugin-compat": "^2.2.0",
     "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.0",
     "exorcist": "^1.0.1",
     "glob": "^7.1.2",
     "http-server": "^0.11.1",
     "shelljs": "^0.8.2",
-    "uglify-es": "^3.3.9"
+    "uglify-es": "^3.3.9",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
   },
-  "browserslist": [
-    "IE 11"
-  ]
+  "browserslist": []
 }
