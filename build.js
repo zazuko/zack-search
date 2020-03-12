@@ -1,6 +1,7 @@
 /* global mkdir, exec, cp */
 require('shelljs/global')
 
+const spawn = require('child_process').spawn
 const camelCase = require('lodash/camelCase')
 const fs = require('fs')
 const glob = require('glob').sync
@@ -23,7 +24,23 @@ fs.writeFileSync('.build/queries.js', queries)
 
 mkdir('-p', 'dist')
 
-exec('browserify lib/dist.js --standalone Zack --debug | exorcist dist/zack.js.map > dist/zack.js')
-exec('uglifyjs dist/zack.js --source-map="content=\'dist/zack.js.map\'" --output dist/zack.min.js')
+const child = spawn('./node_modules/.bin/webpack', [
+  '--mode',
+  'production',
+  '--config',
+  'default.webpack.config.js'
+])
 
-cp('-r', 'public/*', 'dist/')
+child.stdout.on('data', function (data) {
+  process.stdout.write(data)
+})
+
+child.stderr.on('data', function (data) {
+  process.stdout.write(data)
+})
+
+child.on('exit', function (data) {
+  process.stdout.write('Webpack build done.')
+
+  cp('-r', 'public/*', 'dist/')
+})

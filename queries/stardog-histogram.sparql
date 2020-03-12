@@ -10,21 +10,22 @@ SELECT (COUNT(?sub) as ?histo) ?bucket ?bucket_start ?bucket_end
 WHERE {
   ${textmatch}
 
-  GRAPH ?g {
-    ?sub time:intervalStarts ?start .
+    ?sub time:intervalStarts ?start_ .
+    FILTER( datatype(xsd:date(?start_)) = xsd:date || datatype(xsd:date(CONCAT(?start_,"-01-01"))) = xsd:date)
+    BIND ( IF(STRLEN(xsd:string(?start_)) = 4, xsd:date(CONCAT(?start_,"-01-01")), xsd:date(?start_)) AS ?start )
+
     ${filters}
-  }
 
   {
     SELECT ( MIN(?_start) as ?min ) ( COUNT(?sub) as ?count ) ( ( MAX(?_start) - MIN(?_start) ) as ?range ) 
     WHERE {
       ${textmatch}
 
-      GRAPH ?g {
-        ?sub time:intervalStarts ?_start .
+        ?sub time:intervalStarts ?_start_ .
+        FILTER( datatype(xsd:date(?_start_)) = xsd:date || datatype(xsd:date(CONCAT(?_start_,"-01-01"))) = xsd:date)
+        BIND ( IF(STRLEN(xsd:string(?_start_)) = 4, xsd:date(CONCAT(?_start_,"-01-01")), xsd:date(?_start_)) AS ?_start )
 
         ${filters}
-      }
     }
   }
 
@@ -32,7 +33,7 @@ WHERE {
   BIND (xsd:integer(strbefore(strafter(str(?range),"P"), "D")) as ?rangeDays)
 
   # the number of of days in each interval for a fixed number of intervals
-  BIND (floor(?rangeDays / ${width}) AS ?interval)
+  BIND (floor(?rangeDays / ${width}) AS ?interval) 
 
   # the number of days from the min date to start day
   BIND (xsd:integer(strbefore(strafter(str(?start - ?min),"P"), "D")) as ?startDays)
