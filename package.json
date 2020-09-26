@@ -13,7 +13,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "cancelable-fetch": "^1.0.0",
-    "clownface": "^0.12.1",
+    "clownface": "^1.0.0",
     "color-hash": "^1.0.3",
     "crab-event": "^0.1.0",
     "d3": "^4.13.0",
