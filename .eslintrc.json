@@ -1,20 +1,11 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6
-  },
   "env": {
     "browser": true,
     "es6": true
   },
   "extends": "standard",
-  "plugins": ["compat"],
   "rules": {
-    "compat/compat": "error",
     "no-var": "error",
     "prefer-const": "error"
-  },
-  "settings": {
-    "polyfills": ["promises", "fetch"]
   }
 }

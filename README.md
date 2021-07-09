@@ -7,7 +7,6 @@ A highly adaptable HTML5 only component which enables interactive access and to 
 * Install dependencies and build project.
 
   `npm install`
-  This resolve the necessary dependencies and creates Zack inside the `/dist` directory.
 
 * Run locally with proxy to SPARQL endpoint. See for current endpoint in package.json
 
@@ -15,11 +14,11 @@ A highly adaptable HTML5 only component which enables interactive access and to 
 
 ## Configure / Development
 
-* Change the config inside the HTML
+* Change the config inside
 
-  `public/index.html`
+  `public/index.js`
 
 * Find the relevant CSS definitions in
 
-  `public/zack.css`
+  `lib/zack.css`
 
