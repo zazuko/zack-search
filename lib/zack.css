@@ -31,13 +31,6 @@
     padding-top: 20px;
 }
 
-.zack-result {
-    height: 70px;
-    border-top: 1px dotted black;
-    overflow: hidden;
-    position: relative;
-}
-
 .zack-result-list {
     position: absolute;
     height: 100%;
@@ -52,7 +45,7 @@
 .spinner {
   width: 20px;
   height: 20px;
-  margin-left: 7px; 
+  margin-left: 7px;
   background-color: #66afe9;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
@@ -67,13 +60,13 @@
 }
 
 @keyframes sk-rotateplane {
-  0% { 
+  0% {
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
-  } 50% { 
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
     transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
-  } 100% { 
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
@@ -86,20 +79,6 @@
   animation-iteration-count: 1;
 }
 
-.result-level {
-    width: 20px;
-    height: 48px;
-    text-align: center;
-    color: white;
-}
-
-.result-level-wrap {
-    width: 20px;
-    height: 100%;
-    float: left;
-    text-align: center;
-    color: white;
-}
 .result-time-cursor {
     position: absolute;
     width: 1px;
@@ -108,39 +87,6 @@
     bottom: 0px;
     z-index: 5000;
     visibility: hidden;
-}
-
-.result-time-tick {
-    width: 0; 
-    height: 0; 
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #000;
-    position: absolute;
-    margin-left: -6px;
-    z-index: 5000;
-}
-
-.result-time-tick-hover {
-    width: 12px; 
-    height: 6px; 
-    border: 0;
-    background-color: transparent;
-    position: absolute;
-    margin-left: -6px;
-}
-
-.result-main {
-    margin-top: 2px;
-    margin-left: 30px;
-    line-height: 110%;
-    height: 42px;
-    overflow: hidden;
-}
-
-.result-main a {
-    text-decoration: none;
-    color: black;
 }
 
 .result-tags {
@@ -252,79 +198,6 @@
    margin-top: 4px;
    color: green;
    content: "⊕";
-}
-
-.vertical-text {
-/*    transform: rotate(-90.0deg) translate(-100%, 0%) ;
-    transform-origin: top left;
-*/
-    cursor: pointer;
-}
-
-.result-hierarchy-clip {
-  height: 19px;
-  overflow: hidden;
-}
-
-.result-hierarchy { 
-  list-style: none; 
-  overflow-x: scroll; 
-  overflow-y: hidden; 
-  font-size: 80%;
-  width: 1000%;
-  height: 39px;
-  padding: 0;
-  margin: 0;
-}
-
-.result-hierarchy li { 
-  float: left; 
-}
-
-.result-hierarchy li:first-child a {
-  padding-left: 31px;
-}
-
-.result-hierarchy li a {
-  color: white;
-  text-decoration: none; 
-  height: 19px;
-  padding: 0px 0 0px 50px;
-  position: relative; 
-  display: block;
-  float: left;
-  cursor: pointer;
-}
-
-.result-hierarchy li a .result-hierarchy-after { 
-  content: " "; 
-  display: block; 
-  width: 0; 
-  height: 0;
-  border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
-  border-bottom: 50px solid transparent;
-  border-left: 30px solid;
-  position: absolute;
-  top: 50%;
-  margin-top: -50px; 
-  left: 100%;
-  z-index: 501; 
-}
-
-.result-hierarchy li a::before { 
-  content: " "; 
-  display: block; 
-  width: 0; 
-  height: 0;
-  border-top: 50px solid transparent;       
-  border-bottom: 50px solid transparent;
-  border-left: 30px solid white;
-  position: absolute;
-  top: 50%;
-  margin-top: -50px; 
-  margin-left: 1px;
-  left: 100%;
-  z-index: 500; 
 }
 
 .clusterize-scroll{
