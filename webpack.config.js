@@ -39,8 +39,6 @@ module.exports = (env, argv) => {
       },
       module: {
         rules: [
-          { test: /\.(woff2?|svg)$/, use: 'url-loader?limit=10000' },
-          { test: /\.(ttf|eot)$/, use: 'file-loader' },
           {
             test: /\.sparql$/,
             use: ['raw-loader']
