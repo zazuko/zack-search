@@ -245,50 +245,6 @@ button:hover {
 }
 
 
-
-/* Timline SVG Styles */
-
-#zack-timeline {
-  padding-left: 0;
-}
-
-.svg-bar {
-  fill: steelblue;
-  shape-rendering: crispEdges;
-}
-
-.svg-handle {
-  fill: gray;
-  shape-rendering: crispEdges;
-  y: -3px;
-  cursor: ew-resize;
-}
-
-#timeline-axis path {
-  fill: #EBEBEB;
-  stroke: #EBEBEB;
-  shape-rendering: crispEdges;
-}
-
-
-#timeline-axis line {
-  stroke: #fff;
-  stroke-width: 2;
-  shape-rendering: crispEdges;
-}
-
-#timeline-axis text {
-  font: 12px sans-serif;
-  fill: #666;
-}
-
-
-#histogram rect {
-  fill: #666;
-}
-
-
-
 .twitter-typeahead {
 	width: 100%;
 	float: left;

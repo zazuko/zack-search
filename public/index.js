@@ -1,5 +1,5 @@
+import '../lib/components/zack-search'
 import Zack from '../lib/zack'
-import { Histogram } from '../lib/histogram'
 import { TypeFilter } from '../lib/type-filter'
 import { Intro } from '../lib/intro'
 
@@ -28,10 +28,6 @@ const options = {
     }
   },
   plugins: [
-    new Histogram({
-      margin: { top: 0, right: 35, bottom: 40, left: 35 },
-      height: 120
-    }),
     new TypeFilter({
       predicate: 'http://data.archiveshub.ac.uk/def/level',
       values: {
@@ -48,7 +44,8 @@ const options = {
       orphan: true,
       steps: [
         { element: '#query', title: 'Filter by Query', content: 'Enter keywords to filter the results by.' },
-        { element: '#type-filters',
+        {
+          element: '#type-filters',
           placement: 'bottom',
           title: 'Filter by Hierarchy Level',
           content: 'Filter the results to a specific hierarchy level.<dl>' +
@@ -57,7 +54,8 @@ const options = {
                         '<dt>Sub-Fonds</dt><dd>...</dd>' +
                         '<dt>Series</dt><dd>a series of related collections or documents</dd>' +
                         '<dt>Files</dt><dd>a collection of documents</dd>' +
-                        '<dt>Items</dt><dd>an individual documents</dd></dl>' },
+                        '<dt>Items</dt><dd>an individual documents</dd></dl>'
+        },
         { element: '.result-tags .actionable:first', title: 'Contribute Tags', content: 'You can contribute to the project by adding your own tags.' }
       ]
     })
@@ -65,6 +63,8 @@ const options = {
 }
 
 window.app = new Zack(options)
+
+document.querySelector('zack-search').app = window.app
 
 window.app.init().catch(function (err) {
   console.error(err)
