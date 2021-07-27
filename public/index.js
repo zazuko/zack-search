@@ -1,7 +1,7 @@
-import '../lib/components/zack-timeline'
 import Zack from '../lib/zack'
 import { TypeFilter } from '../lib/type-filter'
 import { Intro } from '../lib/intro'
+import '../lib/components/zack-timeline'
 
 const options = {
   endpointUrl: '/query',
