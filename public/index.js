@@ -1,7 +1,6 @@
-import Zack from '../lib/zack'
+import '..'
 import { TypeFilter } from '../lib/type-filter'
 import { Intro } from '../lib/intro'
-import '../lib/components/zack-timeline'
 
 const options = {
   endpointUrl: '/query',
@@ -62,10 +61,6 @@ const options = {
   ]
 }
 
-window.app = new Zack(options)
-
-document.querySelector('zack-search').app = window.app
-
-window.app.init().catch(function (err) {
-  console.error(err)
-})
+const zack = document.querySelector('zack-search')
+zack.options = options
+window.app = zack.app
