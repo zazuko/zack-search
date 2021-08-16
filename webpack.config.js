@@ -6,17 +6,19 @@ module.exports = (env, argv) => {
   let output, webpackIndexHTMLPlugin
   let input = path.resolve(__dirname, './public/index.html')
 
-  /*
+  if (argv.mode === 'production') {
+    /*
       For production build, we disable the HTML plugin and create a single js output
      */
-  output = {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'zack.js',
-    library: 'Zack'
-  }
-  input = path.resolve(__dirname, 'index.js')
-  webpackIndexHTMLPlugin = {
-    template: () => '<html><head></head><body></body></html>'
+    output = {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'zack.js',
+      library: 'Zack'
+    }
+    input = path.resolve(__dirname, 'index.js')
+    webpackIndexHTMLPlugin = {
+      template: () => '<html><head></head><body></body></html>'
+    }
   }
 
   return merge(

@@ -31,7 +31,7 @@
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "webpack --mode development",
+    "build": "webpack --mode production",
     "lint": "eslint lib/*.js",
     "test": "npm run build && npm run lint",
     "start": "webpack-dev-server --mode development"
