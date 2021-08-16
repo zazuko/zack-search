@@ -32,6 +32,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "webpack --mode production",
+    "build:watch": "webpack --mode development --watch",
     "lint": "eslint lib/*.js",
     "test": "npm run build && npm run lint",
     "start": "webpack-dev-server --mode development"

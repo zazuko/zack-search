@@ -1,5 +1,4 @@
 import '..'
-import { TypeFilter } from '../lib/type-filter'
 import { Intro } from '../lib/intro'
 
 const options = {
@@ -27,17 +26,6 @@ const options = {
     }
   },
   plugins: [
-    new TypeFilter({
-      predicate: 'http://data.archiveshub.ac.uk/def/level',
-      values: {
-        'http://data.alod.ch/alod/level/archive': { icon: 'fa-university', title: 'Archives' },
-        'http://data.alod.ch/alod/level/fond': { icon: 'fa-archive', title: 'Fonds' },
-        'http://data.alod.ch/alod/level/subfond': { icon: 'fa-archive', title: 'Sub-Fonds' },
-        'http://data.alod.ch/alod/level/series': { icon: 'fa-sitemap', title: 'Series' },
-        'http://data.alod.ch/alod/level/file': { icon: 'fa-folder-open', title: 'Files' },
-        'http://data.alod.ch/alod/level/item': { icon: 'fa-file', title: 'Items' }
-      }
-    }),
     new Intro({
       backdrop: true,
       orphan: true,

@@ -47,8 +47,26 @@
              </label>
            </div>
          </div>
-         <div id="type-filters" class="col-lg-6 col-md-6 hidden-sm hidden-xs">
-         </div>
+         <zack-type-filters class="col-lg-6 col-md-6 hidden-sm hidden-xs" predicate="http://data.archiveshub.ac.uk/def/level">
+           <zack-type-filter term="http://data.alod.ch/alod/level/archive" title="Archives">
+             <i class="fa fa-university" slot="icon"></i>
+           </zack-type-filter>
+           <zack-type-filter term="http://data.alod.ch/alod/level/fond" title="Fonds">
+             <i class="fa fa-archive" slot="icon"></i>
+           </zack-type-filter>
+           <zack-type-filter term="http://data.alod.ch/alod/level/subfond" title="Sub-Fonds">
+             <i class="fa fa-archive" slot="icon"></i>
+           </zack-type-filter>
+           <zack-type-filter term="http://data.alod.ch/alod/level/series" title="Series">
+             <i class="fa fa-sitemap" slot="icon"></i>
+           </zack-type-filter>
+           <zack-type-filter term="http://data.alod.ch/alod/level/file" title="Files">
+             <i class="fa fa-folder-open" slot="icon"></i>
+           </zack-type-filter>
+           <zack-type-filter term="http://data.alod.ch/alod/level/item" title="Items">
+             <i class="fa fa-file" slot="icon"></i>
+           </zack-type-filter>
+         </zack-type-filters>
        </div>
     </div>
     <div class="row">

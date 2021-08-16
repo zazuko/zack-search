@@ -112,28 +112,6 @@
     color: red;
 }
 
-.type-filter {
-    color: white;
-    border-color: white;
-    border-width: 1px;
-    border-radius: 5px;
-    border-style: solid;
-    line-height: 95%;
-    margin: 2px 4px 2px 4px;
-    padding: 2px 4px 2px 4px;
-    overflow: hidden;
-    cursor: pointer;
-    font-size: 110%;
-    margin-top: 22px;
-    float: right;
-}
-
-.type-filter:hover {
-    border-color: #ddd;
-    background-color: white;
-    color: black;
-}
-
 .actionable {
     background-color: #ddd;
     border-color: #ddd;

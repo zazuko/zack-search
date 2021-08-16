@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
   let output, webpackIndexHTMLPlugin
   let input = path.resolve(__dirname, './public/index.html')
 
-  if (argv.mode === 'production') {
+  if (argv.mode === 'production' || argv.watch) {
     /*
       For production build, we disable the HTML plugin and create a single js output
      */
