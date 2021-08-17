@@ -6,7 +6,7 @@ A highly adaptable HTML5 only component which enables interactive access and to 
 
 * Install dependencies and build project.
 
-  `npm install`
+  `yarn install`
 
 * Run locally with proxy to SPARQL endpoint. See for current endpoint in package.json
 
