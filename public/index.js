@@ -32,7 +32,7 @@ const options = {
       steps: [
         { element: '#query', title: 'Filter by Query', content: 'Enter keywords to filter the results by.' },
         {
-          element: '#type-filters',
+          element: 'zack-type-filters',
           placement: 'bottom',
           title: 'Filter by Hierarchy Level',
           content: 'Filter the results to a specific hierarchy level.<dl>' +
