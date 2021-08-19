@@ -2,7 +2,7 @@ import '..'
 import { Intro } from '../lib/intro'
 
 const options = {
-  endpointUrl: '/query',
+  endpointUrl: 'https://data.alod.ch/query',
   filterContainer: 'filter-container',
   resultTypes: ['http://data.archiveshub.ac.uk/def/ArchivalResource'],
   resultList: {
@@ -10,7 +10,7 @@ const options = {
     preload: 80
   },
   endpoints: {
-    '/query': {
+    'https://data.alod.ch/query': {
       queries: {
         search: 'stardogResultset',
         count: 'stardogMeta',

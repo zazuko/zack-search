@@ -51,15 +51,6 @@ module.exports = (env, argv) => {
       },
       node: {
         crypto: true
-      },
-      devServer: {
-        proxy: {
-          '/query': {
-            target: 'http://data.alod.ch',
-            secure: false,
-            changeOrigin: true
-          }
-        }
       }
     }
   )
