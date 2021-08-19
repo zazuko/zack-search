@@ -1,0 +1,23 @@
+name: GitHub Pages
+
+on:
+  push:
+    tags: ["*"]
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - run: yarn install --frozen-lockfile
+      - run: yarn webpack --mode development
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2.1.1
+        with:
+          build_dir: dist
+          jekyll: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
