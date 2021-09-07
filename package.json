@@ -27,6 +27,7 @@
     "@spectrum-web-components/textfield": "^0.8.12",
     "@spectrum-web-components/toast": "^0.8.13",
     "@tpluscode/rdf-ns-builders": "^1.0.0",
+    "@tpluscode/sparql-builder": "^0.3.16",
     "cancelable-fetch": "^1.0.0",
     "clownface": "^1.0.0",
     "color-hash": "^1.0.3",
