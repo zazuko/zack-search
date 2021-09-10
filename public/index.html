@@ -27,6 +27,13 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a id="zack-intro" href="#"><i class="fa fa-question"></i></a></li>
           <li class="active"><a href="#">Search</a></li>
+          <li>
+            <a href="#">
+              <label style="margin: 0">
+                Compact <input type="checkbox" id="compactToggle">
+              </label>
+            </a>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
@@ -42,14 +49,7 @@
              </zack-query-input>
            </div>
          </div>
-         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-           <div class="form-group has-feedback zack-query-group">
-             <label>
-               Compact <input type="checkbox" id="compactToggle">
-             </label>
-           </div>
-         </div>
-         <zack-type-filters class="col-lg-6 col-md-6 hidden-sm hidden-xs" predicate="http://data.archiveshub.ac.uk/def/level">
+         <zack-type-filters class="col-lg-7 col-md-7 hidden-sm hidden-xs" predicate="http://data.archiveshub.ac.uk/def/level">
            <zack-type-filter term="http://data.alod.ch/alod/level/archive" title="Archives">
              <i class="fa fa-university" slot="icon"></i>
            </zack-type-filter>
