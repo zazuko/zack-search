@@ -3,7 +3,6 @@ import { Intro } from '../lib/intro'
 
 const options = {
   endpointUrl: 'https://data.alod.ch/query',
-  filterContainer: 'filter-container',
   resultTypes: ['http://data.archiveshub.ac.uk/def/ArchivalResource'],
   resultList: {
     pageSize: 20,

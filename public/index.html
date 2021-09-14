@@ -27,6 +27,13 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a id="zack-intro" href="#"><i class="fa fa-question"></i></a></li>
           <li class="active"><a href="#">Search</a></li>
+          <li>
+            <a href="#">
+              <label style="margin: 0">
+                Compact <input type="checkbox" id="compactToggle">
+              </label>
+            </a>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
@@ -36,18 +43,13 @@
        <div class="zack-query-box">
          <div class="col-lg-5 col-md-5 col-sm-11 col-xs-11">
            <div class="form-group has-feedback has-clear zack-query-group">
-             <input autofocus id="query" class="form-control input-lg zack-query-input" type="text" placeholder="Refine Result with Keywords.">
-             <a id="clear" class="glyphicon glyphicon-remove-sign form-control-feedback form-control-clear" style="visibility: hidden; pointer-events: auto; text-decoration: none; cursor: pointer;"></a>
+             <zack-query-input>
+               <input autofocus slot="query" class="form-control input-lg zack-query-input" type="text" placeholder="Refine Result with Keywords.">
+               <a slot="clear" class="glyphicon glyphicon-remove-sign form-control-feedback form-control-clear" style="pointer-events: auto; text-decoration: none; cursor: pointer;"></a>
+             </zack-query-input>
            </div>
          </div>
-         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-           <div class="form-group has-feedback zack-query-group">
-             <label>
-               Compact <input type="checkbox" id="compactToggle">
-             </label>
-           </div>
-         </div>
-         <zack-type-filters class="col-lg-6 col-md-6 hidden-sm hidden-xs" predicate="http://data.archiveshub.ac.uk/def/level">
+         <zack-type-filters class="col-lg-7 col-md-7 hidden-sm hidden-xs" predicate="http://data.archiveshub.ac.uk/def/level">
            <zack-type-filter term="http://data.alod.ch/alod/level/archive" title="Archives">
              <i class="fa fa-university" slot="icon"></i>
            </zack-type-filter>
@@ -67,12 +69,13 @@
              <i class="fa fa-file" slot="icon"></i>
            </zack-type-filter>
          </zack-type-filters>
+         <zack-lists></zack-lists>
        </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <div id="filter-container" class="zack-filter">&nbsp;
-        </div>
+        <zack-filter-summary id="filter-container" class="zack-filter">&nbsp;
+        </zack-filter-summary>
       </div>
     </div>
     <div class="zack-content">

@@ -93,25 +93,6 @@
     overflow: hidden;
 }
 
-.filter-item {
-    font-size: 10px;
-    background-color: white;
-    line-height: 95%;
-    margin: 2px 4px 2px 4px;
-    padding: 2px 4px 2px 4px;
-    border-radius: 5px;
-    overflow: hidden;
-    float: left;
-    cursor: pointer;
-}
-
-.filter-item:after {
-    content: "x";
-    margin-left: 5px;
-    font-weight: 600;
-    color: red;
-}
-
 .actionable {
     background-color: #ddd;
     border-color: #ddd;
