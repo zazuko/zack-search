@@ -4,6 +4,7 @@ PREFIX  text: <http://jena.apache.org/text#>
 PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix time: <http://www.w3.org/2006/time#>
 
 CONSTRUCT {
   _:b0 :numberOfResults ?count.
@@ -25,7 +26,7 @@ WHERE {
       ${textmatch}
       ${filters}
 
-      ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .
+      ?sub time:intervalStarts ?resourcestart .
     }
   }
   UNION
@@ -34,7 +35,7 @@ WHERE {
       ${textmatch}
       ${filters}
 
-      ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
+      ?sub time:intervalStarts ?resourceend .
     }
   }
 }
