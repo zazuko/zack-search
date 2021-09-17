@@ -52,6 +52,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
     "@open-wc/building-webpack": "^2.13.46",
+    "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^5.2.6",
     "eslint": "^7.30.0",
     "eslint-config-standard": "^16.0.3",

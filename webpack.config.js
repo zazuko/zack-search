@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge')
 const { createDefaultConfig } = require('@open-wc/building-webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
 module.exports = (env, argv) => {
@@ -51,7 +52,14 @@ module.exports = (env, argv) => {
       },
       node: {
         crypto: true
-      }
+      },
+      plugins: [
+        new CopyPlugin({
+          patterns: [
+            { from: 'lib/zack.css' }
+          ]
+        })
+      ]
     }
   )
 }
