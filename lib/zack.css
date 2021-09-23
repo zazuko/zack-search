@@ -5,6 +5,9 @@
     height: calc(100vh - 290px);
 }
 
+zack-timeline > *, zack-type-filter > *, zack-query-input > * {
+  display: none;
+}
 
 .zack-query-box {
     z-index: 10000;
