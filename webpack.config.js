@@ -56,7 +56,10 @@ module.exports = (env, argv) => {
       plugins: [
         new CopyPlugin({
           patterns: [
-            { from: 'lib/zack.css' }
+            { from: 'lib/zack.css' },
+            { from: 'lib/zack-result.css' },
+            { from: 'public/shape', to: 'shape' },
+            { from: 'public/templates', to: 'templates' }
           ]
         })
       ]

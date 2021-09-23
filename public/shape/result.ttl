@@ -1,0 +1,88 @@
+prefix time: <http://www.w3.org/2006/time#>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix sh: <http://www.w3.org/ns/shacl#>
+prefix zack: <http://voc.zazuko.com/zack#>
+prefix code: <https://code.described.at/>
+prefix schema: <http://schema.org/>
+prefix rico: <https://www.ica.org/standards/RiC/ontology#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix iiif: <http://iiif.io/api/presentation/3#>
+prefix alod: <http://data.alod.ch/alod/>
+prefix locah: <http://data.archiveshub.ac.uk/def/>
+
+[
+  sh:property
+    [
+      sh:name "thumbnail" ;
+      sh:path ( rico:hasInstantiation rdfs:seeAlso iiif:thumbnail ) ;
+    ],
+    [
+      sh:name "physicalForm" ;
+      sh:path alod:physicalForm ;
+    ],
+    [
+      sh:name "url" ;
+      sh:path locah:isRepresentedBy ;
+    ],
+    [
+      sh:name "description" ;
+      sh:path dcterms:description ;
+    ],
+    [
+      sh:name "note" ;
+      sh:path locah:note ;
+    ],
+    [
+      sh:name "title" ;
+      sh:path dcterms:title ;
+    ],
+    [
+      sh:name "conceptTags" ;
+      sh:path alod:conceptTag ;
+    ],
+    [
+      sh:name "referenceCode" ;
+      sh:path
+        [
+          sh:alternativePath ( alod:referenceCode alod:recordId ) ;
+        ] ;
+    ],
+    [
+      sh:name "intervalStarts" ;
+      sh:path time:intervalStarts ;
+    ],
+    [
+      sh:name "intervalEnds" ;
+      sh:path time:intervalEnds ;
+    ] ;
+  schema:hasPart
+    [
+      schema:name "thumbnail" ;
+      code:link "/templates/thumbnail.js" ;
+      schema:hasPart [ schema:name "img" ] ;
+    ],
+    [
+      schema:name "other" ;
+      code:link "/templates/other.js" ;
+    ],
+    [
+      schema:name "tags" ;
+      code:link "/templates/tags.js" ;
+    ],
+    [
+      schema:name "reference" ;
+      code:link "/templates/reference.js" ;
+    ],
+    [
+      schema:name "main" ;
+      code:link "/templates/main.js" ;
+    ],
+    [
+      schema:name "result-level" ;
+      code:link "/templates/result-level.js" ;
+    ],
+    [
+      schema:name "hierarchy" ;
+      code:link "/templates/hierarchy.js" ;
+    ] ;
+] .
