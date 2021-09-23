@@ -18,6 +18,7 @@
     "@captaincodeman/rdx": "^1.0.0-rc.9",
     "@lit-labs/virtualizer": "^0.6.0",
     "@rdf-esm/data-model": "^0.5.4",
+    "@rdf-esm/formats-common": "^0.5.5",
     "@spectrum-web-components/action-menu": "^0.11.1",
     "@spectrum-web-components/dialog": "^0.6.14",
     "@spectrum-web-components/menu": "^0.9.1",
