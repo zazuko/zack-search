@@ -36,7 +36,6 @@
     "immer": "^9.0.5",
     "lit": "^2.0.0-rc.2",
     "lodash": "^4.17.21",
-    "markdown-table": "^3.0.1",
     "nodeify-fetch": "^2.2.0",
     "rdf-ext": "^1.3.0",
     "rdf-literal": "^1.3.0",
