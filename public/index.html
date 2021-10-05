@@ -18,6 +18,24 @@
 </head>
 <body>
 <zack-search>
+<script type="application/ld+json" id="csv-export-shape" class="shape">
+  {
+    "@context": {
+      "@vocab": "http://www.w3.org/ns/shacl#",
+      "path": { "@type": "@id" }
+    },
+    "property": [{
+      "name": "Title",
+      "path": "http://purl.org/dc/terms/title",
+      "order": 0
+    }, {
+      "name": "Code",
+      "path": "http://data.alod.ch/alod/referenceCode",
+      "order": 1
+    }]
+  }
+</script>
+
 <div class="container">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
