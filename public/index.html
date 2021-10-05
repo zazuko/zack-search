@@ -36,6 +36,45 @@
     }]
   }
 </script>
+<script type="application/ld+json" id="order-shape" class="shape">
+  {
+    "@context": {
+      "@vocab": "http://www.w3.org/ns/shacl#",
+      "time": "http://www.w3.org/2006/time#",
+      "path": { "@type": "@id" }
+    },
+    "property": [{
+      "path": "http://purl.org/dc/terms/title",
+      "order": 0
+    }, {
+      "path": "time:intervalStarts",
+      "order": 1
+    }, {
+      "path": "time:intervalEnds",
+      "order": 2
+    }]
+  }
+</script>
+
+<template id="records-order" data-to="zack@zazuko.com" data-subject="Order records">
+  <style>
+    p {
+      font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    }
+  </style>
+
+  <p>
+    Organisation:<br>
+    Name:<br>
+    Address:<br>
+    Zip-Code:<br>
+    Place:<br>
+    Country:<br>
+    Email:<br>
+    Telephone:<br>
+    Preferred Date of loan:
+  </p>
+</template>
 
 <div class="container">
   <nav class="navbar navbar-default">
