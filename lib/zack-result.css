@@ -1,0 +1,64 @@
+zack-results::part(compact hierarchy) ,
+zack-results::part(compact tags) ,
+zack-results::part(compact other) ,
+zack-results::part(compact thumbnail) {
+  display: none;
+}
+
+zack-results::part(hierarchy) {
+  grid-column: 2 / 7;
+  grid-row: 1;
+  overflow: hidden;
+}
+
+zack-results::part(result-level) {
+  grid-column: 2;
+  grid-row: 2 / 3;
+}
+
+zack-results::part(main) {
+  grid-column: 3;
+  grid-row: 2 / 4;
+  padding-left: 10px;
+  overflow: hidden;
+}
+
+zack-results::part(compact main) {
+  grid-column: 3 / 6;
+  line-height: 110%;
+  padding-top: 2px;
+}
+
+zack-results::part(reference) {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+zack-results::part(compact reference) {
+  grid-column: 6;
+}
+
+zack-results::part(tags) {
+  grid-column: 6;
+  grid-row: 2;
+}
+
+zack-results::part(other) {
+  grid-column: 5 / 6;
+  grid-row: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+zack-results::part(thumbnail) {
+  grid-column: 7;
+  grid-row: 1 / 4;
+  max-width: var(--zack-result-thumbnail-width, 64px);
+  overflow: hidden;
+}
+
+zack-results::part(thumbnail-img) {
+  height: 100%;
+  position: absolute;
+  right: 0
+}
