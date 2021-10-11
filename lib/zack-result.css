@@ -32,6 +32,7 @@ zack-results::part(compact main) {
 zack-results::part(reference) {
   grid-column: 5;
   grid-row: 2;
+  overflow: hidden;
 }
 
 zack-results::part(compact reference) {
