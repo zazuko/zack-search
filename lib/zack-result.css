@@ -13,7 +13,11 @@ zack-results::part(hierarchy) {
 
 zack-results::part(result-level) {
   grid-column: 2;
-  grid-row: 2 / 3;
+  grid-row: 2 / 4;
+  width: 20px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
 }
 
 zack-results::part(main) {
