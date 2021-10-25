@@ -6,7 +6,7 @@ zack-results::part(compact thumbnail) {
 }
 
 zack-results::part(hierarchy) {
-  grid-column: 2 / 7;
+  grid-column: 2 / 8;
   grid-row: 1;
   overflow: hidden;
 }
