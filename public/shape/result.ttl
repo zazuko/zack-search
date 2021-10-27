@@ -62,31 +62,31 @@ prefix locah: <http://data.archiveshub.ac.uk/def/>
   schema:hasPart
     [
       schema:name "thumbnail" ;
-      code:link "/templates/thumbnail.js" ;
+      code:link "./templates/thumbnail.js" ;
       schema:hasPart [ schema:name "img" ] ;
     ],
     [
       schema:name "other" ;
-      code:link "/templates/other.js" ;
+      code:link "./templates/other.js" ;
     ],
     [
       schema:name "tags" ;
-      code:link "/templates/tags.js" ;
+      code:link "./templates/tags.js" ;
     ],
     [
       schema:name "reference" ;
-      code:link "/templates/reference.js" ;
+      code:link "./templates/reference.js" ;
     ],
     [
       schema:name "main" ;
-      code:link "/templates/main.js" ;
+      code:link "./templates/main.js" ;
     ],
     [
       schema:name "result-level" ;
-      code:link "/templates/result-level.js" ;
+      code:link "./templates/result-level.js" ;
     ],
     [
       schema:name "hierarchy" ;
-      code:link "/templates/hierarchy.js" ;
+      code:link "./templates/hierarchy.js" ;
     ] ;
 ] .
