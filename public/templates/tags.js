@@ -1,5 +1,5 @@
 export default function ({ html, shape }, { conceptTags }) {
-  const predicate = shape.conceptTags.path.term
+  const predicate = shape.properties.conceptTags.path.term
 
   return html`<div class="result-tags">
       ${(conceptTags?.terms || []).map(tag => html`
