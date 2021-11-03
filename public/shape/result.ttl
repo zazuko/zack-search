@@ -41,6 +41,14 @@ prefix locah: <http://data.archiveshub.ac.uk/def/>
       sh:path locah:level ;
     ],
     [
+      sh:name "hasPart" ;
+      sh:path dcterms:hasPart ;
+    ],
+    [
+      sh:name "relation" ;
+      sh:path dcterms:relation ;
+    ],
+    [
       sh:name "conceptTags" ;
       sh:path alod:conceptTag ;
     ],

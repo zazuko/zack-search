@@ -1,9 +1,7 @@
-import { dcterms } from 'https://jspm.dev/@tpluscode/rdf-ns-builders'
-
 export function renderFilter (
-  { operator = '=', prefix = '^', postfix = '+', predicate = dcterms.hasPart, expression } = {}
+  { operator = '=', prefix = '^', postfix = '+', expression } = {}
 ) {
-  return ({ html, subject }, { intervalStarts }) => {
+  return function ({ html, subject, shape }, { intervalStarts }) {
     let timeTick = ''
     if (intervalStarts?.value) {
       const timelineMargin = 40
@@ -24,6 +22,7 @@ export function renderFilter (
                              .filterPostfix="${postfix}"
                              .filterOperator="${operator}"
                              .filterExpression="${expression}"
+                             .shape="${shape}"
       ></zack-result-hierarchy>
     `
   }
