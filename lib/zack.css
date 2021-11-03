@@ -171,11 +171,6 @@ zack-timeline > *, zack-type-filter > *, zack-query-input > * {
   display: none;
 }
 
-.clusterize-content{
-    width: calc(100% - 15px);
-    outline: 0;
-}
-
 .clusterize-no-data {
 }
 
@@ -189,18 +184,6 @@ zack-timeline > *, zack-type-filter > *, zack-query-input > * {
   float: right !important; /* to trump media query better way than !important: http://tiny.cc/bt-override */
 }
 
-button.zack-reset {
-  display: inline-block;
-  font-size: 10px;
-  margin: 0;
-  padding: 0.05em 0.25em;
-  outline: none;
-  color: #666;
-  background-color: #f0f0f0;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
 button:hover {
   background-color: #e6e6e6;
 }
