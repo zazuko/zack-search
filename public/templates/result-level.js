@@ -32,7 +32,7 @@ export function renderFilter (
                    .label="${levelShort}: ${title}"
                    .value="${subject}">
         <div data-toggle="tooltip" data-placement="right" class="vertical-text"
-             style="height: 100%; background-color: var(--level-${levelShort}-color, ${levelColor})">${faIcon}
+             style="height: 100%; background-color: var(--zack-level-${levelShort}-color, ${levelColor})">${faIcon}
         </div>
       </zack-filter>
     `
