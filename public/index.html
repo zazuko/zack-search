@@ -15,6 +15,17 @@
     body {
       --zack-result-compact-height: 32px;
     }
+
+    #buttons {
+      display: none;
+      position: absolute;
+      right: 10px;
+      top: 10px
+    }
+
+    zack-search[list-selected] #buttons {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -151,6 +162,10 @@
 
             <link id="result" type="text/turtle" class="shape" href="shape/result.ttl">
           </zack-results>
+          <div id="buttons">
+            <button onclick="this.dispatchEvent(new Event('zack-download-results', { bubbles: true }))">Export</button>
+            <button onclick="this.dispatchEvent(new Event('zack-order-results', { bubbles: true }))">Order</button>
+          </div>
         </div>
       </div>
     </div>
