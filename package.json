@@ -12,7 +12,8 @@
   },
   "main": "dist/zack.js",
   "files": [
-    "dist"
+    "dist",
+    "lib"
   ],
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
