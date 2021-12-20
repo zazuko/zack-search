@@ -38,6 +38,9 @@ module.exports = (env, argv) => {
           stream: 'readable-stream'
         }
       },
+      externals: {
+        i18next: 'i18next'
+      },
       module: {
         rules: [
           {

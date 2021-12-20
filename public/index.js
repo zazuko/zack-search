@@ -1,5 +1,12 @@
 import '..'
 import { Intro } from '../lib/intro'
+import i18next from 'i18next'
+
+i18next.init({
+  lng: 'en',
+  fallbackLng: 'en',
+  resources: {}
+})
 
 const options = {
   endpointUrl: 'https://data.alod.ch/query',
