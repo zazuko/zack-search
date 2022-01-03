@@ -10,11 +10,41 @@ prefix iiif: <http://iiif.io/api/presentation/3#>
 prefix alod: <http://data.alod.ch/alod/>
 prefix locah: <http://data.archiveshub.ac.uk/def/>
 
-[
+_:refCodeShape
+  sh:property
+    [
+      sh:name "referenceCode" ;
+      sh:path
+        [
+          sh:alternativePath
+            (
+              alod:referenceCode alod:recordId
+            ) ;
+        ] ;
+    ],
+    [
+      sh:name "intervalStarts" ;
+      sh:path time:intervalStarts ;
+    ],
+    [
+      sh:name "intervalEnds" ;
+      sh:path time:intervalEnds ;
+    ] ;
+  schema:hasPart
+    [
+      schema:name "reference" ;
+      code:link "./templates/reference.js" ;
+    ]
+.
+
+_:baseShape
   sh:property
     [
       sh:name "thumbnail" ;
-      sh:path ( rico:hasInstantiation rdfs:seeAlso iiif:thumbnail ) ;
+      sh:path
+        (
+          rico:hasInstantiation rdfs:seeAlso iiif:thumbnail
+        ) ;
     ],
     [
       sh:name "physicalForm" ;
@@ -41,31 +71,12 @@ prefix locah: <http://data.archiveshub.ac.uk/def/>
       sh:path locah:level ;
     ],
     [
-      sh:name "hasPart" ;
-      sh:path dcterms:hasPart ;
-    ],
-    [
       sh:name "relation" ;
       sh:path dcterms:relation ;
     ],
     [
       sh:name "conceptTags" ;
       sh:path alod:conceptTag ;
-    ],
-    [
-      sh:name "referenceCode" ;
-      sh:path
-        [
-          sh:alternativePath ( alod:referenceCode alod:recordId ) ;
-        ] ;
-    ],
-    [
-      sh:name "intervalStarts" ;
-      sh:path time:intervalStarts ;
-    ],
-    [
-      sh:name "intervalEnds" ;
-      sh:path time:intervalEnds ;
     ] ;
   schema:hasPart
     [
@@ -82,17 +93,25 @@ prefix locah: <http://data.archiveshub.ac.uk/def/>
       code:link "./templates/tags.js" ;
     ],
     [
-      schema:name "reference" ;
-      code:link "./templates/reference.js" ;
-    ],
-    [
       schema:name "main" ;
       code:link "./templates/main.js" ;
     ],
     [
       schema:name "result-level" ;
       code:link "./templates/result-level.js" ;
-    ],
+    ] ;
+.
+
+[
+  a sh:NodeShape ;
+  sh:targetClass <http://data.archiveshub.ac.uk/def/ArchivalResource> ;
+  sh:and ( _:baseShape _:refCodeShape ) ;
+  sh:property
+    [
+      sh:name "hasPart" ;
+      sh:path dcterms:hasPart ;
+    ] ;
+  schema:hasPart
     [
       schema:name "hierarchy" ;
       code:link "./templates/hierarchy.js" ;
