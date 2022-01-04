@@ -31,7 +31,6 @@
     "clownface": "^1.0.0",
     "clownface-shacl-path": "^1.3.0",
     "color-hash": "^1.0.3",
-    "crab-event": "^0.1.0",
     "d3": "^5",
     "date-format": "^3.0.0",
     "debounce": "^1.2.0",
@@ -43,6 +42,7 @@
     "rdf-ext": "^1.3.0",
     "rdf-literal": "^1.3.0",
     "readable-stream": "^3",
+    "resize-observer": "^1.0.4",
     "sparql-http-client": "^2.1.0",
     "string-to-stream": "^3.0.1"
   },
