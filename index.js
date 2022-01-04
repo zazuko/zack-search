@@ -4,6 +4,8 @@ import './lib/components/zack-type-filters'
 import './lib/components/zack-timeline'
 import './lib/components/zack-filter-summary'
 import './lib/components/zack-query-input'
+import './lib/components/zack-query-order'
+import './lib/components/zack-query-order-menu'
 import './lib/components/zack-lists'
 
 export { default as rdf } from 'rdf-ext'
