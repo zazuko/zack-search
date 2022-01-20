@@ -65,6 +65,14 @@
       -o-animation-iteration-count: 1;
       animation-iteration-count: 1;
     }
+
+    zack-query-order {
+      padding-left: 10px;
+    }
+
+    zack-query-order[selected] {
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -189,9 +197,31 @@
        </div>
     </div>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-6">
         <zack-filter-summary id="filter-container" class="zack-filter">&nbsp;
         </zack-filter-summary>
+      </div>
+      <div class="col-6" style="text-align: right">
+        <zack-query-order-menu>
+          Order:
+          <zack-query-order id="order-by-score" selected descending variable="totalScore">
+            <script type="application/sparql-query">
+              ?sub <http://www.w3.org/2006/time#intervalStarts> ?startOptional .
+              BIND ( COALESCE(STR(?startOptional), "0001-01-01") AS ?start )
+              BIND ( xsd:date(CONCAT(SUBSTR(?start, 0, 10), SUBSTR("0001-01-01", STRLEN(?start) + 1))) AS ?startDate )
+              BIND ( ?startDate - xsd:date(NOW()) AS ?startDelta )
+              BIND ( COALESCE(xsd:float(STRBEFORE(STRAFTER(STR(?startDelta),"P"), "D")), 0) AS ?startScore )
+              BIND ( COALESCE(?score, ?startScore) AS ?totalScore )
+            </script>
+            by score
+          </zack-query-order>
+          <zack-query-order id="order-by-title" variable="title">
+            <script type="application/sparql-query">
+              ?sub <http://purl.org/dc/terms/title> ?title
+            </script>
+            by title
+          </zack-query-order>
+        </zack-query-order-menu>
       </div>
     </div>
     <div class="zack-content">
