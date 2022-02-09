@@ -57,4 +57,33 @@ const options = {
 
 const zack = document.querySelector('zack-search')
 zack.options = options
+
+let currentOrder
+const orderByMatch = document.querySelector('#order-by-match')
+
+function setFulltextOrder () {
+  currentOrder = document.querySelector('zack-query-order[selected]')
+  orderByMatch.style.display = 'unset'
+  orderByMatch.sort()
+}
+
+function removeFullTextOrder () {
+  orderByMatch.style.display = 'none'
+  currentOrder.sort()
+}
+
+if (new URL(location.href).searchParams.get('q')) {
+  setFulltextOrder()
+}
+
+zack.addEventListener('zack-set-text-query', (e) => {
+  if (e.detail.value) {
+    setFulltextOrder()
+  } else {
+    removeFullTextOrder()
+  }
+})
+
+zack.addEventListener('zack-clear-text-query', removeFullTextOrder)
+
 window.app = zack.app
