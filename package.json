@@ -1,7 +1,7 @@
 {
   "name": "zack-search",
   "description": "Search interface for Zack",
-  "version": "0.16.3",
+  "version": "0.16.4",
   "homepage": "https://github.com/zazuko/zack-search",
   "repository": {
     "type": "git",
