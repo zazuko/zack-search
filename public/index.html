@@ -27,6 +27,10 @@
       display: block;
     }
 
+    zack-search:not([full-text-search]) #order-by-match {
+      display: none;
+    }
+
     @-webkit-keyframes sk-rotateplane {
       0% { -webkit-transform: perspective(120px) }
       50% { -webkit-transform: perspective(120px) rotateY(180deg) }
@@ -204,7 +208,7 @@
       <div class="col-6" style="text-align: right">
         <zack-query-order-menu>
           Order:
-          <zack-query-order id="order-by-match" descending variable="score" style="display: none">by best match</zack-query-order>
+          <zack-query-order id="order-by-match" descending variable="score">by best match</zack-query-order>
           <zack-query-order id="order-by-score" selected descending variable="totalScore">
             <script type="application/sparql-query">
               ?sub <http://www.w3.org/2006/time#intervalStarts> ?startOptional .
