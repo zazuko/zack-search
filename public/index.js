@@ -62,7 +62,7 @@ let currentOrder
 const orderByMatch = document.querySelector('#order-by-match')
 
 function setFulltextOrder () {
-  currentOrder = document.querySelector('zack-query-order[selected]')
+  currentOrder = currentOrder || document.querySelector('zack-query-order[selected]')
   orderByMatch.style.display = 'unset'
   orderByMatch.sort()
 }
@@ -70,6 +70,7 @@ function setFulltextOrder () {
 function removeFullTextOrder () {
   orderByMatch.style.display = 'none'
   currentOrder.sort()
+  currentOrder = null
 }
 
 if (new URL(location.href).searchParams.get('q')) {
