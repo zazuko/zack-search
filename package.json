@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "@captaincodeman/rdx": "^1.0.0-rc.9",
-    "@lit-labs/virtualizer": "^0.7.0-pre.2",
+    "@lit-labs/virtualizer": "^0.7.0-pre.3",
     "@rdf-esm/data-model": "^0.5.4",
     "@rdf-esm/formats-common": "^0.5.5",
     "@spectrum-web-components/action-menu": "^0.11.1",
