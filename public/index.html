@@ -216,9 +216,9 @@
             </script>
             by score
           </zack-query-order>
-          <zack-query-order id="order-by-title" variable="title" no-optional>
+          <zack-query-order id="order-by-title" variable="title" no-optional custom-expression="(!bound(?title)) ${expression}">
             <script type="application/sparql-query">
-              ?sub <http://purl.org/dc/terms/title> ?title
+              OPTIONAL { ?sub <http://purl.org/dc/terms/title> ?title }
             </script>
             by title
           </zack-query-order>
