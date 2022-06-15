@@ -67,7 +67,7 @@ function setFulltextOrder () {
 }
 
 function removeFullTextOrder () {
-  currentOrder.sort()
+  currentOrder?.sort()
   currentOrder = null
 }
 
