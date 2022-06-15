@@ -34,6 +34,7 @@
     "d3": "^5",
     "date-format": "^3.0.0",
     "debounce": "^1.2.0",
+    "dot-object": "^2",
     "immer": "^9.0.5",
     "lit": "^2.0.0",
     "lit-i18n": "^3",
