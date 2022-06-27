@@ -6,10 +6,12 @@ PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix time: <http://www.w3.org/2006/time#>
 prefix dcterms: <http://purl.org/dc/terms/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 
 CONSTRUCT {
   :query :result ?sub .
   ?sub a :resultItem .
+  ?sub vcard:sort-string ?_sort_string .
   ?sub ?pred ?obj .
   ?sub1 <http://data.archiveshub.ac.uk/def/level> ?level1 .
   ?sub1 <http://purl.org/dc/terms/title> ?title1 .
@@ -50,7 +52,7 @@ CONSTRUCT {
   ?sub :score ?totalScore .
 } WHERE {
   {
-    SELECT ?sub ?totalScore WHERE {
+    SELECT ?sub ?totalScore ?_sort_string WHERE {
       ${textmatch}
       ${filters}
 
