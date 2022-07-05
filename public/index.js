@@ -62,18 +62,13 @@ let currentOrder
 const orderByMatch = document.querySelector('#order-by-match')
 
 function setFulltextOrder () {
-  currentOrder = document.querySelector('zack-query-order[selected]')
-  orderByMatch.style.display = 'unset'
+  currentOrder = currentOrder || document.querySelector('zack-query-order[selected]')
   orderByMatch.sort()
 }
 
 function removeFullTextOrder () {
-  orderByMatch.style.display = 'none'
-  currentOrder.sort()
-}
-
-if (new URL(location.href).searchParams.get('q')) {
-  setFulltextOrder()
+  currentOrder?.sort()
+  currentOrder = null
 }
 
 zack.addEventListener('zack-set-text-query', (e) => {
