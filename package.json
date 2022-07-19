@@ -60,6 +60,7 @@
     "start": "webpack-dev-server --mode development"
   },
   "devDependencies": {
+    "@babel/core": "^7",
     "@babel/preset-env": "^7.14.7",
     "@open-wc/building-webpack": "^2.13.46",
     "copy-webpack-plugin": "^6.4.1",
