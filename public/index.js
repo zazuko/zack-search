@@ -58,7 +58,7 @@ const options = {
 const zack = document.querySelector('zack-search')
 zack.options = options
 
-let currentOrder
+let currentOrder = document.querySelector('#order-by-score')
 const orderByMatch = document.querySelector('#order-by-match')
 
 function setFulltextOrder () {
