@@ -1,0 +1,212 @@
+/* zack */
+.zack-content {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 290px);
+}
+
+zack-timeline > *, zack-type-filter > *, zack-query-input > * {
+  display: none;
+}
+
+.zack-query-box {
+    z-index: 10000;
+}
+
+.zack-query-group {
+    margin-bottom: 0;
+}
+
+.zack-filter {
+    padding-top: 2px;
+}
+
+.zack-overview {
+    max-height: 65px;
+    padding-top: 8px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.zack-meta {
+    padding-top: 20px;
+}
+
+.zack-result-list {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.zack-big {
+    font-size: 120%;
+    margin: 0;
+}
+
+.result-time-cursor {
+    position: absolute;
+    width: 1px;
+    background-color: black;
+    top: 0px;
+    bottom: 0px;
+    z-index: 5000;
+    visibility: hidden;
+}
+
+.result-tags {
+    height: 20px;
+    overflow: hidden;
+}
+
+.actionable {
+    background-color: #ddd;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.actionable:hover {
+    border-color: #2196f3;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filterable {
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filterable:hover {
+    border-color: #2196f3;
+    border-width: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 10px;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filterable:after {
+   margin-left: 5px;
+   font-weight: 600;
+   margin-top: 4px;
+   color: green;
+   content: "⊕";
+}
+
+.clusterize-scroll{
+  overflow: auto;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.clusterize-extra-row.clusterize-keep-parity{
+  display: none;
+}
+
+.clusterize-no-data {
+}
+
+.space {
+    display: none;
+}
+
+/* Zack-overview styles */
+
+.col-lg-2 {
+  float: right !important; /* to trump media query better way than !important: http://tiny.cc/bt-override */
+}
+
+button:hover {
+  background-color: #e6e6e6;
+}
+
+
+.twitter-typeahead {
+	width: 100%;
+	float: left;
+}
+
+.twitter-typeahead .tt-hint {
+	top: 1px !important;
+}
+
+.twitter-typeahead .tt-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display: none;
+	float: left;
+	min-width: 160px;
+	width: 100%;
+	padding: 5px 0;
+	list-style: none;
+	text-align: left;
+	border: none;
+	background-clip: padding-box;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion > a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.846;
+	color: #666;
+	white-space: nowrap;
+	font-size: 15px;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion > a .tt-highlight {
+	display: inline;
+	padding: 0em 0.2em 0em;
+	font-weight: bold;
+	line-height: 1;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25em;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion > a:hover {
+	text-decoration: none;
+	color: #141414;
+	background-color: #eeeeee;
+}
+
+.twitter-typeahead .tt-menu li.tt-suggestion.tt-cursor {
+	transition: all 0.2s;
+	text-decoration: none;
+	color: #141414;
+	background-color: #eeeeee;
+}
